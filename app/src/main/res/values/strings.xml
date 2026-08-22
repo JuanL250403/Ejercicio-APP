@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">Ejercicio-APP</string>
+    <string name="registro_bienvenida">Comienza tu evolución</string>
+    <string name="registro_bienvenida_descripcion">Necesitamos algunos datos básicos</string>
+    <string name="inicio_bienvenida">Bienvenido de nuevo</string>
+    <string name="inicio_bienvenida_descripcion">Introduce tus credenciales para continuar entrenando</string>
+
+    <string name="nombre">Nombre completo</string>
+    <string name="Correo">Correo electrónico</string>
+    <string name="edad">Edad</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="peso">Peso (kg)</string>
+    <string name="altura">Altura (cm)</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="sinCuenta">¿Aun no tienes una cuenta?</string>
+    <string name="entrar">Entrar</string>
 </resources>

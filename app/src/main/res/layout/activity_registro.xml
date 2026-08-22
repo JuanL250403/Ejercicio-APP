@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    style="@style/Layout_Main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.Registro">
+
+
+    <LinearLayout
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:id="@+id/textoPresentacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/Texto_Titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/registro_bienvenida"
+                tools:layout_editor_absoluteX="159dp"
+                tools:layout_editor_absoluteY="68dp" />
+
+            <TextView
+                style="@style/Texto_SubTitulo"
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/registro_bienvenida_descripcion"
+                tools:layout_editor_absoluteX="168dp"
+                tools:layout_editor_absoluteY="165dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/textoPresentacion">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:hint="@string/nombre"
+                    style="@style/Form_InputOutline"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/nombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:hint="@string/Correo"
+                    style="@style/Form_InputOutline"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/correo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:hint="@string/contrasena"
+                    style="@style/Form_InputOutline"
+                    android:layout_height="wrap_content">
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/contrasena"
+                        android:inputType="textPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill"
+                    android:columnCount="2"
+                    android:orientation="vertical"
+                    android:rowCount="2">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_row="0"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+                        android:hint="@string/peso"
+                        style="@style/Form_InputOutline">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/peso"
+                            android:inputType="number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_row="1"
+                        android:layout_columnWeight="1"
+                        android:layout_columnSpan="2"
+                        android:layout_gravity="fill"
+                        android:hint="@string/edad"
+                        style="@style/Form_InputOutline">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edad"
+                            android:inputType="number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_row="0"
+                        android:layout_columnWeight="1"
+                        android:layout_gravity="fill"
+
+                        android:hint="@string/altura"
+                        style="@style/Form_InputOutline">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/altura"
+                            android:inputType="number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                </GridLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/registrarse"
+            style="@style/Form_Button"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </LinearLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
