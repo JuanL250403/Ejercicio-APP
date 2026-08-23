@@ -2,8 +2,10 @@ package com.example.ejercicio_app.views
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.R
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModel
 import com.example.ejercicio_app.databinding.ActivityInicioSesionBinding
@@ -20,11 +22,11 @@ class InicioSesion : AppCompatActivity() {
         binding = ActivityInicioSesionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.correo.doAfterTextChanged { i ->
+        binding.etCorreo.doAfterTextChanged { i ->
             vm.setCorreo(i.toString())
         }
 
-        binding.contrasena.doAfterTextChanged { i ->
+        binding.etContrasena.doAfterTextChanged { i ->
             vm.setContrasnea(i.toString())
         }
 
@@ -32,9 +34,26 @@ class InicioSesion : AppCompatActivity() {
             registrarse()
         }
 
-        binding.entrar.setOnClickListener {
+        binding.btnEntrar.setOnClickListener {
             vm.iniciarSesion()
         }
+
+        vm.autenticado.observe(this, {autenticado ->
+            val mensaje = if(autenticado) "Autenticado" else "Credneciales incorrectas"
+
+
+            Toast.makeText(this@InicioSesion, mensaje, Toast.LENGTH_SHORT).show()
+        })
+
+        vm.errorCorreo.observe(this, {e ->
+            if(e.equals(0)) binding.ltCorreo.error = null
+            else binding.ltCorreo.setError(getString(e))
+        })
+
+        vm.erroContrasena.observe(this, {e ->
+            if(e.equals(0)) binding.ltContrasnea.error = null
+            else binding.ltContrasnea.setError(getString(e))
+        })
     }
 
     fun registrarse() {

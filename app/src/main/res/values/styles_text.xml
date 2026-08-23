@@ -20,9 +20,9 @@
     </style>
 
     <style name="Texto_HiperVinculo">
+        <item name="android:textColor">@color/primario</item>
         <item name="android:textSize">16sp</item>
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:textColor">@color/primario</item>
     </style>
 </resources>

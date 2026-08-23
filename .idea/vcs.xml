@@ -2,5 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/creando pantalla de login y registro, estilos globales y colores principales de la aplicacion" vcs="Git" />
   </component>
 </project>

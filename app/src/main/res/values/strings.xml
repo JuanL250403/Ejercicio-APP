@@ -14,4 +14,9 @@
     <string name="registrarse">Registrarse</string>
     <string name="sinCuenta">¿Aun no tienes una cuenta?</string>
     <string name="entrar">Entrar</string>
+
+    <string name="correo_invalido">Formato de correo invalido</string>
+    <string name="correo_vacio">El correo no puede estar vacio</string>
+
+    <string name="contrasena_vacia">La contraseña no puede estar vacia</string>
 </resources>
