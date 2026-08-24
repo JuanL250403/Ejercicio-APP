@@ -3,4 +3,31 @@
     <style name="Layout_Main">
         <item name="android:padding">20dp</item>
     </style>
+
+    <style name="Card_Inicio_Entrenamiento" parent="Widget.MaterialComponents.CardView">
+        <item name="strokeColor">@color/primario</item>
+        <item name="android:padding">200dp</item>
+        <item name="strokeWidth">5dp</item>
+        <item name="cardCornerRadius">20dp</item>
+    </style>
+
+    <style name="Card_Inicio_Opcion" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="strokeColor">@color/primario</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="cardBackgroundColor">@color/black</item>
+        <item name="android:layout_marginHorizontal">10dp</item>
+    </style>
+
+    <style name="Layout_Card_Inicio_Entrenamiento">
+        <item name="android:paddingVertical">40dp</item>
+        <item name="android:paddingHorizontal">25dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Layout_Card_Inicio_Opcion">
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingVertical">30dp</item>
+        <item name="android:gravity">center</item>
+    </style>
 </resources>

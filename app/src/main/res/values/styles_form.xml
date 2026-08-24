@@ -13,4 +13,12 @@
         <item name="boxStrokeWidthFocused">3dp</item>
         <item name="android:layout_margin">10dp</item>
     </style>
+
+    <style name="Form_Button_Incio_Entrenamiento">
+        <item name="borderRound">5dp</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16dp</item>
+    </style>
 </resources>

@@ -25,4 +25,23 @@
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textAllCaps">true</item>
     </style>
+    
+    <style name="Texto_Titulo_Resaltado_Card">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primario</item>
+        <item name="android:textSize">19sp</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    
+    <style name="Texto_Descripcion_Entrenamiento_Card">
+        <item name="android:fontFamily">@font/oswald_bold</item>
+        <item name="android:textSize">28dp</item>
+    </style>
+
+    <style name="Texto_Descripcion_Opcion_Card">
+        <item name="android:fontFamily">@font/oswald_bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">18dp</item>
+    </style>
 </resources>

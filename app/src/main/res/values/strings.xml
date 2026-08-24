@@ -15,6 +15,13 @@
     <string name="sinCuenta">¿Aun no tienes una cuenta?</string>
     <string name="entrar">Entrar</string>
 
+    <string name="rutina_hoy">Rutina de hoy</string>
+    <string name="iniciar_entrenamiento">Iniciar entrenamiento</string>
+    <string name="calendario">Calendario de entrenamiento</string>
+    <string name="gestion_rutinas">Gestión de rutinas</string>
+    <string name="historial">Historial de entrenamientos</string>
+    <string name="sin_rutina_hoy">Sin rutina disponible</string>
+
     <string name="correo_invalido">Formato de correo invalido</string>
     <string name="correo_vacio">El correo no puede estar vacio</string>
 

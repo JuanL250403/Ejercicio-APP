@@ -41,8 +41,13 @@ class InicioSesion : AppCompatActivity() {
         vm.autenticado.observe(this, {autenticado ->
             val mensaje = if(autenticado) "Autenticado" else "Credneciales incorrectas"
 
-
             Toast.makeText(this@InicioSesion, mensaje, Toast.LENGTH_SHORT).show()
+
+            if(autenticado) {
+                val intent = Intent(this, Inicio::class.java)
+                startActivity(intent)
+                finish()
+            }
         })
 
         vm.errorCorreo.observe(this, {e ->
@@ -54,11 +59,16 @@ class InicioSesion : AppCompatActivity() {
             if(e.equals(0)) binding.ltContrasnea.error = null
             else binding.ltContrasnea.setError(getString(e))
         })
+
     }
 
     fun registrarse() {
         val intent = Intent(this, Registro::class.java)
 
         startActivity(intent)
+    }
+
+    fun navegarInicio() {
+
     }
 }

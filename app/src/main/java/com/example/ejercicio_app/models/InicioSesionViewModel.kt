@@ -63,7 +63,7 @@ class InicioSesionViewModel : ViewModel() {
 
     private fun validarCorreo(): Boolean {
         Log.d("prueba", Regex("/^[^@]+@[^@]+\\.[^@]+\$/gm").matches(correo.value.toString()).toString())
-        if(correo.value == null) {
+        if(correo.value.isNullOrEmpty()) {
             _erroCorreo.value = R.string.correo_vacio
             return false
         }
@@ -76,7 +76,7 @@ class InicioSesionViewModel : ViewModel() {
     }
 
     private fun validaContrasena(): Boolean {
-        if(contrasena.value == null) {
+        if(contrasena.value.isNullOrEmpty()) {
             _errorContrasena.value = R.string.contrasena_vacia
             return false
         }
@@ -111,7 +111,5 @@ class InicioSesionViewModel : ViewModel() {
             }
 
         }
-
-
     }
 }
