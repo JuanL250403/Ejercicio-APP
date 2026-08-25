@@ -61,10 +61,11 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:hint="@string/nombre"
+                    android:id="@+id/ltNombre"
                     style="@style/Form_InputOutline"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/nombre"
+                        android:id="@+id/etNombre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -72,10 +73,12 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:hint="@string/Correo"
+                    android:id="@+id/ltCorreo"
                     style="@style/Form_InputOutline"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/correo"
+                        android:id="@+id/etCorreo"
+                        android:inputType="textEmailAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                 </com.google.android.material.textfield.TextInputLayout>
@@ -83,10 +86,11 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:hint="@string/contrasena"
+                    android:id="@+id/ltContrasena"
                     style="@style/Form_InputOutline"
                     android:layout_height="wrap_content">
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/contrasena"
+                        android:id="@+id/etContrasena"
                         android:inputType="textPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
@@ -105,11 +109,12 @@
                         android:layout_row="0"
                         android:layout_columnWeight="1"
                         android:layout_gravity="fill"
+                        android:id="@+id/ltPeso"
                         android:hint="@string/peso"
                         style="@style/Form_InputOutline">
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/peso"
-                            android:inputType="number"
+                            android:id="@+id/etPeso"
+                            android:inputType="numberDecimal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                     </com.google.android.material.textfield.TextInputLayout>
@@ -119,11 +124,13 @@
                         android:layout_columnWeight="1"
                         android:layout_columnSpan="2"
                         android:layout_gravity="fill"
-                        android:hint="@string/edad"
+                        android:id="@+id/ltFechaNacimiento"
+                        android:hint="@string/fecha_nacimiento"
                         style="@style/Form_InputOutline">
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edad"
-                            android:inputType="number"
+                            android:id="@+id/etFechaNacimiento"
+                            android:focusable="false"
+                            android:focusableInTouchMode="false"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
                     </com.google.android.material.textfield.TextInputLayout>
@@ -132,11 +139,11 @@
                         android:layout_row="0"
                         android:layout_columnWeight="1"
                         android:layout_gravity="fill"
-
+                        android:id="@+id/ltAltura"
                         android:hint="@string/altura"
                         style="@style/Form_InputOutline">
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/altura"
+                            android:id="@+id/etAltura"
                             android:inputType="number"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
@@ -150,6 +157,7 @@
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:id="@+id/btnRegistrar"
             android:text="@string/registrarse"
             style="@style/Form_Button"
             app:layout_constraintBottom_toBottomOf="parent" />

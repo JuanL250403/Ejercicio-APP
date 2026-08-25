@@ -7,7 +7,7 @@
 
     <string name="nombre">Nombre completo</string>
     <string name="Correo">Correo electrónico</string>
-    <string name="edad">Edad</string>
+    <string name="fecha_nacimiento">FechaNacimiento</string>
     <string name="contrasena">Contraseña</string>
     <string name="peso">Peso (kg)</string>
     <string name="altura">Altura (cm)</string>
@@ -22,6 +22,21 @@
     <string name="historial">Historial de entrenamientos</string>
     <string name="sin_rutina_hoy">Sin rutina disponible</string>
 
+    <string name="usuario_registrado">Usuario registrado</string>
+    <string name="correo_registrado">El correo ya se encuentra registrado</string>
+    <string name="sesion_iniciada">Usuario autenticado</string>
+    <string name="credenciales_invalidas">Credenciales incorrectas</string>
+    
+
+    <string name="nombre_vacio">El nombre no puede estar vacio</string>
+    
+    <string name="fecha_nacimiento_vacio">La fecha de nacimiento no puede estar vacia</string>
+    <string name="fecha_nacimiento_invalida">La fecha de nacimiento no es valida</string>
+    
+    <string name="peso_invalido">El peso no es valido</string>
+
+    <string name="altura_invalida">La altura no es valida</string>
+    
     <string name="correo_invalido">Formato de correo invalido</string>
     <string name="correo_vacio">El correo no puede estar vacio</string>
 

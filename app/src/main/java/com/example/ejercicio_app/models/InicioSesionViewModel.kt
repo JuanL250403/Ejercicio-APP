@@ -39,13 +39,20 @@ class InicioSesionViewModel : ViewModel() {
 
     val erroContrasena: LiveData<Int> get() = _errorContrasena
 
-    private val _autenticado: MutableLiveData<Boolean> by lazy {
+    private val _estadoValidado: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>()
+    }
+
+    val estadoValidado: LiveData<Int> get() = _estadoValidado
+
+    private val _validado: MutableLiveData<Boolean> by lazy {
         MutableLiveData<Boolean>()
     }
 
-    val autenticado: LiveData<Boolean> get() = _autenticado
+    val validado: LiveData<Boolean> get() = _validado
 
     init {
+        _validado.value = false
         correo.value = null
         contrasena.value = null
     }
@@ -62,8 +69,7 @@ class InicioSesionViewModel : ViewModel() {
     }
 
     private fun validarCorreo(): Boolean {
-        Log.d("prueba", Regex("/^[^@]+@[^@]+\\.[^@]+\$/gm").matches(correo.value.toString()).toString())
-        if(correo.value.isNullOrEmpty()) {
+        if(correo.value.isNullOrBlank()) {
             _erroCorreo.value = R.string.correo_vacio
             return false
         }
@@ -76,7 +82,7 @@ class InicioSesionViewModel : ViewModel() {
     }
 
     private fun validaContrasena(): Boolean {
-        if(contrasena.value.isNullOrEmpty()) {
+        if(contrasena.value.isNullOrBlank()) {
             _errorContrasena.value = R.string.contrasena_vacia
             return false
         }
@@ -89,7 +95,7 @@ class InicioSesionViewModel : ViewModel() {
         return validado
     }
 
-    fun iniciarSesion() {
+    fun iniciarSesion(){
 
         if(!validarFormulario()) return
 
@@ -101,9 +107,10 @@ class InicioSesionViewModel : ViewModel() {
                 val respuesta = EjercicioApi.authService.iniciarSesion(usuario)
 
                 if (respuesta.isSuccessful) {
-                    _autenticado.value = true
-                } else if (respuesta.code() == 403) {
-                    _autenticado.value = false
+                    _estadoValidado.value = R.string.sesion_iniciada
+                    _validado.value = true
+                } else  {
+                    _estadoValidado.value = R.string.credenciales_invalidas
                 }
 
             } catch (e: Exception) {
@@ -111,5 +118,6 @@ class InicioSesionViewModel : ViewModel() {
             }
 
         }
+
     }
 }

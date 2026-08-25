@@ -2,6 +2,7 @@ package com.example.ejercicio_app.views
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -38,25 +39,25 @@ class InicioSesion : AppCompatActivity() {
             vm.iniciarSesion()
         }
 
-        vm.autenticado.observe(this, {autenticado ->
-            val mensaje = if(autenticado) "Autenticado" else "Credneciales incorrectas"
+        vm.estadoValidado.observe(this, { estado ->
+            Toast.makeText(this@InicioSesion, getString(estado), Toast.LENGTH_SHORT).show()
+        })
 
-            Toast.makeText(this@InicioSesion, mensaje, Toast.LENGTH_SHORT).show()
-
-            if(autenticado) {
+        vm.validado.observe(this, {validado ->
+            if (validado) {
                 val intent = Intent(this, Inicio::class.java)
                 startActivity(intent)
                 finish()
             }
         })
 
-        vm.errorCorreo.observe(this, {e ->
-            if(e.equals(0)) binding.ltCorreo.error = null
+        vm.errorCorreo.observe(this, { e ->
+            if (e.equals(0)) binding.ltCorreo.error = null
             else binding.ltCorreo.setError(getString(e))
         })
 
-        vm.erroContrasena.observe(this, {e ->
-            if(e.equals(0)) binding.ltContrasnea.error = null
+        vm.erroContrasena.observe(this, { e ->
+            if (e.equals(0)) binding.ltContrasnea.error = null
             else binding.ltContrasnea.setError(getString(e))
         })
 
