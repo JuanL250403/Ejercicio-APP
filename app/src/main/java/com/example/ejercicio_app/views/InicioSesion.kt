@@ -11,6 +11,7 @@ import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModel
 import com.example.ejercicio_app.databinding.ActivityInicioSesionBinding
 import com.example.ejercicio_app.models.InicioSesionViewModel
+import com.google.android.material.textfield.TextInputLayout
 
 class InicioSesion : AppCompatActivity() {
     private lateinit var binding: ActivityInicioSesionBinding
@@ -52,24 +53,31 @@ class InicioSesion : AppCompatActivity() {
         })
 
         vm.errorCorreo.observe(this, { e ->
-            if (e.equals(0)) binding.ltCorreo.error = null
-            else binding.ltCorreo.setError(getString(e))
+            if (e.equals(0)) removerValidacionCampo(binding.ltCorreo)
+            else setValidacionCampo(binding.ltCorreo, e)
         })
 
         vm.erroContrasena.observe(this, { e ->
-            if (e.equals(0)) binding.ltContrasnea.error = null
-            else binding.ltContrasnea.setError(getString(e))
+            if (e.equals(0)) removerValidacionCampo(binding.ltContrasnea)
+            else setValidacionCampo(binding.ltContrasnea, e)
         })
 
     }
 
     fun registrarse() {
         val intent = Intent(this, Registro::class.java)
-
         startActivity(intent)
+        finish()
     }
 
-    fun navegarInicio() {
-
+    fun setValidacionCampo(input: TextInputLayout, error: Int) {
+        input.isErrorEnabled = true
+        input.setError(getString(error))
     }
+
+    fun removerValidacionCampo(input: TextInputLayout) {
+        input.error = null
+        input.isErrorEnabled = false
+    }
+
 }

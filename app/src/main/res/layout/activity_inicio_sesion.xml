@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    style="@style/Layout_Main"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.InicioSesion">
 
+
     <LinearLayout
+        style="@style/Layout_Main"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_width="wrap_content"
@@ -22,14 +23,27 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/Texto_Titulo"
-                android:text="@string/inicio_bienvenida"
-                tools:layout_editor_absoluteX="159dp"
-                tools:layout_editor_absoluteY="68dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvTitulo"
+                    android:layout_weight="5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Texto_Titulo"
+                    android:text="@string/inicio_bienvenida" />
+
+                <include
+                    layout="@layout/logo"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/textView2"

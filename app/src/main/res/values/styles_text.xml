@@ -5,8 +5,12 @@
         <item name="android:textColor">@color/primario</item>
         <item name="android:lineHeight">60sp</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:textSize">60sp</item>
+        <item name="android:textSize">50sp</item>
         <item name="android:fontFamily">@font/oswald_bold</item>
+    </style>
+
+    <style name="Texto_Titulo_Cabecera" parent="Texto_Titulo">
+        <item name="android:textSize">30dp</item>
     </style>
 
     <style name="Texto_SubTitulo">
@@ -43,5 +47,11 @@
         <item name="android:fontFamily">@font/oswald_bold</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="Texto_Navegacion">
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">19sp</item>
     </style>
 </resources>

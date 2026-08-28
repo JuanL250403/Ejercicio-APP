@@ -3,16 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    style="@style/Layout_Main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.Inicio">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        style="@style/Layout_Cabecera"
+        android:layout_height="70dp"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/cabecera"
+        >
+        <TextView
+            style="@style/Texto_Titulo_Cabecera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="inicio"
+            />
+    </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        android:id="@+id/svContendio"
+        app:layout_constraintBottom_toTopOf="@id/ltBarraNavegacion"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintTop_toBottomOf="@id/cabecera">
         <LinearLayout
+            style="@style/Layout_Main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -167,6 +187,87 @@
 
         </LinearLayout>
     </ScrollView>
+    <GridLayout
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_weight="1"
+        android:id="@+id/ltBarraNavegacion"
+        style="@style/Layout_Barra_Navegacion"
+        android:columnCount="4"
+        android:layout_height="100dp">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_columnWeight="1"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_home_inicio"/>
+            <TextView
+                android:text="@string/navegacion_inicio"
+                android:layout_width="wrap_content"
+                style="@style/Texto_Navegacion"
+                android:layout_height="wrap_content">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_columnWeight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_pesa_inicio"/>
+            <TextView
+                android:text="@string/navegacion_rutina"
+                android:layout_width="wrap_content"
+                style="@style/Texto_Navegacion"
+                android:layout_height="wrap_content">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_columnWeight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_calendario_inicio"/>
+            <TextView
+                android:text="@string/navegacion_calendario"
+                android:layout_width="wrap_content"
+                style="@style/Texto_Navegacion"
+                android:layout_height="wrap_content">
+            </TextView>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_columnWeight="1"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_perfil_inicio"/>
+            <TextView
+                android:text="@string/navegacion_perfil"
+                android:layout_width="wrap_content"
+                style="@style/Texto_Navegacion"
+                android:layout_height="wrap_content">
+            </TextView>
+        </LinearLayout>
 
+    </GridLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

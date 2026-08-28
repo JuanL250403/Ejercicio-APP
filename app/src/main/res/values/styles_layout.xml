@@ -30,4 +30,14 @@
         <item name="android:paddingVertical">30dp</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <style name="Layout_Cabecera">
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:background">@color/terciario</item>
+    </style>
+
+    <style name="Layout_Barra_Navegacion">
+        <item name="android:background">@color/terciario</item>
+    </style>
 </resources>

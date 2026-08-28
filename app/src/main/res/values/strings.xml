@@ -14,6 +14,7 @@
     <string name="registrarse">Registrarse</string>
     <string name="sinCuenta">¿Aun no tienes una cuenta?</string>
     <string name="entrar">Entrar</string>
+    <string name="iniciar_sesion">Iniciar sesion</string>
 
     <string name="rutina_hoy">Rutina de hoy</string>
     <string name="iniciar_entrenamiento">Iniciar entrenamiento</string>
@@ -26,6 +27,11 @@
     <string name="correo_registrado">El correo ya se encuentra registrado</string>
     <string name="sesion_iniciada">Usuario autenticado</string>
     <string name="credenciales_invalidas">Credenciales incorrectas</string>
+
+    <string name="navegacion_inicio">Inicio</string>
+    <string name="navegacion_rutina">Rutina</string>
+    <string name="navegacion_calendario">Calendario</string>
+    <string name="navegacion_perfil">Perfil</string>
     
 
     <string name="nombre_vacio">El nombre no puede estar vacio</string>
