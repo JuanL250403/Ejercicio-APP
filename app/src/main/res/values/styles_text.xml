@@ -9,6 +9,14 @@
         <item name="android:fontFamily">@font/oswald_bold</item>
     </style>
 
+    <style name="Texto_Titulo_Pantalla">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:lineHeight">60sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">35sp</item>
+        <item name="android:fontFamily">@font/oswald_bold</item>
+    </style>
+
     <style name="Texto_Titulo_Cabecera" parent="Texto_Titulo">
         <item name="android:textSize">30dp</item>
     </style>
@@ -53,5 +61,17 @@
         <item name="android:fontFamily">@font/inter</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">19sp</item>
+    </style>
+
+    <style name="Texto_Titulo_Card">
+        <item name="android:fontFamily">@font/oswald_bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">19sp</item>
+    </style>
+
+    <style name="Texto_SubTitulo_Card">
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">12sp</item>
     </style>
 </resources>

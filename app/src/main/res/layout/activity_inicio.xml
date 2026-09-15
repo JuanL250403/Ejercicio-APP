@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.Inicio">
+    tools:context=".activities.Inicio">
 
 
     <LinearLayout
@@ -76,6 +76,8 @@
 
             <com.google.android.material.card.MaterialCardView
                 style="@style/Card_Inicio_Opcion"
+                android:id="@+id/btnCalendario"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -95,7 +97,7 @@
                         android:layout_height="wrap_content">
                         <ImageView
                             style="@style/imagen_opcion_inicio"
-                            android:src="@drawable/ic_calendario" />
+                            android:src="@drawable/ic_calendario_inicio" />
                     </com.google.android.material.card.MaterialCardView>
 
                     <TextView
@@ -113,6 +115,8 @@
 
             <com.google.android.material.card.MaterialCardView
                 style="@style/Card_Inicio_Opcion"
+                android:id="@+id/btnRutinas"
+                android:clickable="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -241,7 +245,7 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/ic_calendario_inicio"/>
+                android:src="@drawable/ic_calendario"/>
             <TextView
                 android:text="@string/navegacion_calendario"
                 android:layout_width="wrap_content"

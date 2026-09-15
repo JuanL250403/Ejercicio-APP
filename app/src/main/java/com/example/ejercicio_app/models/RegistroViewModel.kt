@@ -6,15 +6,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ejercicio_app.R
-import com.example.ejercicio_app.data.UsuarioRegistro
-import com.example.ejercicio_app.network.EjercicioApi
+import com.example.ejercicio_app.data.Recurso
+import com.example.ejercicio_app.data.request.UsuarioRegistro
+import com.example.ejercicio_app.network.services.UsuarioService
+import com.example.ejercicio_app.repository.AuthRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import jakarta.inject.Inject
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.Date
 import java.util.Locale
 
-class RegistroViewModel : ViewModel() {
+@HiltViewModel
+class RegistroViewModel @Inject constructor(
+    private val authRepository: AuthRepository
+) : ViewModel() {
 
     val nombre: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
@@ -149,7 +155,10 @@ class RegistroViewModel : ViewModel() {
 
     private fun validarCorreo(): Boolean {
         Log.d("prueba", correo.value.toString())
-        Log.d("prueba", Regex("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$").matches(correo.value.toString()).toString())
+        Log.d("prueba",
+            Regex("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$").matches(correo.value.toString())
+                .toString()
+        )
         if (correo.value.isNullOrBlank()) {
             _erroCorreo.value = R.string.correo_vacio
             return false
@@ -211,18 +220,19 @@ class RegistroViewModel : ViewModel() {
         )
 
         viewModelScope.launch {
-            try {
-                val respuesta = EjercicioApi.usuarioService.registrarUsuario(usuario)
 
-                if(respuesta.isSuccessful) {
-                    _estadoRegistro.value = R.string.usuario_registrado
-                } else if(respuesta.code() == 403) {
-                    _estadoRegistro.value = R.string.correo_registrado
+            authRepository.registrarse(usuario).collect { t ->
+                when (t) {
+                    is Recurso.Exito -> {
+                        _estadoRegistro.value = t.data
+                    }
+
+                    is Recurso.Error -> _estadoRegistro.value = t.mensaje
+                    else -> {}
                 }
-            } catch (e: Exception) {
-
             }
         }
+
 
     }
 }

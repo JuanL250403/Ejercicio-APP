@@ -1,6 +1,6 @@
 package com.example.ejercicio_app.network.services
 
-import com.example.ejercicio_app.data.UsuarioRegistro
+import com.example.ejercicio_app.data.request.UsuarioRegistro
 import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Body

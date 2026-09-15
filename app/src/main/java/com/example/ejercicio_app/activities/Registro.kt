@@ -1,4 +1,4 @@
-package com.example.ejercicio_app.views
+package com.example.ejercicio_app.activities
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -11,7 +11,9 @@ import androidx.core.widget.doAfterTextChanged
 import com.example.ejercicio_app.databinding.ActivityRegistroBinding
 import com.example.ejercicio_app.models.RegistroViewModel
 import com.google.android.material.textfield.TextInputLayout
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class Registro : AppCompatActivity() {
     lateinit var binding: ActivityRegistroBinding
 

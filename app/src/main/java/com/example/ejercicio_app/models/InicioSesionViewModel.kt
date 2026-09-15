@@ -1,22 +1,24 @@
 package com.example.ejercicio_app.models
 
 import android.util.Log
-import android.widget.Toast
-import androidx.core.content.ContextCompat.getString
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.ejercicio_app.BuildConfig
 import com.example.ejercicio_app.R
-import com.example.ejercicio_app.data.AuthResponse
-import com.example.ejercicio_app.data.UsuarioInicioSesion
-import com.example.ejercicio_app.network.EjercicioApi
-import com.example.ejercicio_app.views.InicioSesion
+import com.example.ejercicio_app.data.Recurso
+import com.example.ejercicio_app.data.request.UsuarioInicioSesion
+import com.example.ejercicio_app.network.TokenManager
+import com.example.ejercicio_app.network.services.AuthService
+import com.example.ejercicio_app.repository.AuthRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import jakarta.inject.Inject
 import kotlinx.coroutines.launch
-import java.io.IOException
 
-class InicioSesionViewModel : ViewModel() {
+@HiltViewModel
+class InicioSesionViewModel @Inject constructor(
+    private val authRepository: AuthRepository
+    ) : ViewModel() {
 
     val correo: MutableLiveData<String> by lazy {
         MutableLiveData<String>()
@@ -103,20 +105,16 @@ class InicioSesionViewModel : ViewModel() {
 
         viewModelScope.launch {
 
-            try {
-                val respuesta = EjercicioApi.authService.iniciarSesion(usuario)
-
-                if (respuesta.isSuccessful) {
-                    _estadoValidado.value = R.string.sesion_iniciada
-                    _validado.value = true
-                } else  {
-                    _estadoValidado.value = R.string.credenciales_invalidas
+            authRepository.iniciarSesion(usuario).collect { t ->
+                when(t) {
+                    is Recurso.Exito -> {
+                        _estadoValidado.value = t.data
+                        _validado.value = true
+                    }
+                    is Recurso.Error -> _estadoValidado.value = t.mensaje
+                    else -> {}
                 }
-
-            } catch (e: Exception) {
-                Log.d("inicio", e.message.toString())
             }
-
         }
 
     }

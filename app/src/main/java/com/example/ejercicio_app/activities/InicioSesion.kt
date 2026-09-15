@@ -1,18 +1,17 @@
-package com.example.ejercicio_app.views
+package com.example.ejercicio_app.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.R
 import androidx.core.widget.doAfterTextChanged
-import androidx.lifecycle.ViewModel
 import com.example.ejercicio_app.databinding.ActivityInicioSesionBinding
 import com.example.ejercicio_app.models.InicioSesionViewModel
 import com.google.android.material.textfield.TextInputLayout
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class InicioSesion : AppCompatActivity() {
     private lateinit var binding: ActivityInicioSesionBinding
 

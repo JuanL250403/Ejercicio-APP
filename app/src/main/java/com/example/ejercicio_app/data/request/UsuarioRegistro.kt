@@ -1,6 +1,4 @@
-package com.example.ejercicio_app.data
-
-import java.time.LocalDate
+package com.example.ejercicio_app.data.request
 
 data class UsuarioRegistro(
     val nombre: String,

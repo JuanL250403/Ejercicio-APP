@@ -15,6 +15,7 @@
     <string name="sinCuenta">¿Aun no tienes una cuenta?</string>
     <string name="entrar">Entrar</string>
     <string name="iniciar_sesion">Iniciar sesion</string>
+    <string name="buscar_ruitna">Buscar rutina...</string>
 
     <string name="rutina_hoy">Rutina de hoy</string>
     <string name="iniciar_entrenamiento">Iniciar entrenamiento</string>
@@ -32,17 +33,19 @@
     <string name="navegacion_rutina">Rutina</string>
     <string name="navegacion_calendario">Calendario</string>
     <string name="navegacion_perfil">Perfil</string>
-    
+
+    <string name="rutinas_pantalla">Rutinas registradas</string>
+
 
     <string name="nombre_vacio">El nombre no puede estar vacio</string>
-    
+
     <string name="fecha_nacimiento_vacio">La fecha de nacimiento no puede estar vacia</string>
     <string name="fecha_nacimiento_invalida">La fecha de nacimiento no es valida</string>
-    
+
     <string name="peso_invalido">El peso no es valido</string>
 
     <string name="altura_invalida">La altura no es valida</string>
-    
+
     <string name="correo_invalido">Formato de correo invalido</string>
     <string name="correo_vacio">El correo no puede estar vacio</string>
 

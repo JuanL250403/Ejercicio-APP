@@ -19,6 +19,16 @@
         <item name="android:layout_margin">10dp</item>
     </style>
 
+    <style name="Form_InputBusqueda_Outline" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeWidth">4dp</item>
+        <item name="boxCornerRadiusBottomEnd">20dp</item>
+        <item name="boxCornerRadiusBottomStart">20dp</item>
+        <item name="boxCornerRadiusTopEnd">20dp</item>
+        <item name="boxCornerRadiusTopStart">20dp</item>
+        <item name="boxStrokeWidthFocused">3dp</item>
+        <item name="android:layout_marginVertical">20dp</item>
+    </style>
+
     <style name="Form_Button_Incio_Entrenamiento">
         <item name="borderRound">5dp</item>
         <item name="android:fontFamily">@font/inter</item>
