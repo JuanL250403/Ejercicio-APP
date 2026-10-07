@@ -44,14 +44,41 @@
         <item name="android:gravity">center</item>
     </style>
 
-
-    <style name="Layout_Cabecera">
-        <item name="android:paddingVertical">10dp</item>
-        <item name="android:paddingHorizontal">20dp</item>
+    <style name="Layout_Barra_Navegacion">
         <item name="android:background">@color/terciario</item>
     </style>
 
-    <style name="Layout_Barra_Navegacion">
+    <style name="Layout_Boton_Flotante" parent="ShapeAppearanceOverlay.Material3.FloatingActionButton">
+        <item name="android:layout_margin">20dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:backgroundTint">@color/primario</item>
+    </style>
+
+    <style name="Layout_Card_Ejercicio_Buscar">
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingVertical">20dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Layout_Card_Instrucciones">
+        <item name="strokeColor">@color/primario</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingVertical">30dp</item>
+        <item name="android:gravity">center</item>
+
+        <item name="strokeWidth">2dp</item>
+    </style>
+
+    <style name="Layout_img_redondeada">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="Layout_Toolbar">
+        <item name="android:elevation">4dp</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:textAllCaps">true</item>
         <item name="android:background">@color/terciario</item>
     </style>
 </resources>

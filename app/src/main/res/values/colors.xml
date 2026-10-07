@@ -6,4 +6,5 @@
     <color name="secundario">#CCFF00</color>
     <color name="terciario">#1A1A1A</color>
     <color name="neutral">#000000</color>
+    <color name="rojo">#FF0000</color>
 </resources>

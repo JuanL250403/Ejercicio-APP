@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/inicioFragment">
+    <fragment
+        android:id="@+id/inicioFragment"
+        android:name="com.example.ejercicio_app.fragments.InicioFragment"
+        android:label="Inicio"
+        tools:layout="@layout/fragment_inicio" >
+        <action
+            android:id="@+id/action_inicioFragment_to_rutinasActualesFragment"
+            app:destination="@id/rutinasActualesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rutinasActualesFragment"
+        android:name="com.example.ejercicio_app.fragments.RutinasActualesFragment"
+        android:label="Rutinas"
+        tools:layout="@layout/fragment_rutinas_actuales" >
+        <action
+            android:id="@+id/action_rutinasActualesFragment_to_agregarRutinaActualFragment"
+            app:destination="@id/agregarRutinaActualFragment" />
+        <action
+            android:id="@+id/action_rutinasActualesFragment_to_detalleRutinaActualFragment"
+            app:destination="@id/detalleRutinaActualFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agregarRutinaActualFragment"
+        android:name="com.example.ejercicio_app.fragments.AgregarRutinaActualFragment"
+        android:label="Agregar rutina"
+        tools:layout="@layout/fragment_agregar_rutina_actual" >
+        <action
+            android:id="@+id/action_agregarRutinaActualFragment_to_buscarEjercicioAgregarFragment"
+            app:destination="@id/buscarEjercicioAgregarFragment" />
+        <action
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/rutinasActualesFragment"
+            android:id="@+id/action_agregarRutinaActualFragment_to_rutinasActualesFragment"
+            app:destination="@id/rutinasActualesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/buscarEjercicioAgregarFragment"
+        android:name="com.example.ejercicio_app.fragments.BuscarEjercicioAgregarFragment"
+        android:label="Ejercicios"
+        tools:layout="@layout/fragment_buscar_ejercicio_agregar" >
+        <action
+            android:id="@+id/action_buscarEjercicioAgregarFragment_to_agregarEjercicioFragment"
+            app:destination="@id/agregarEjercicioFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agregarEjercicioFragment"
+        android:name="com.example.ejercicio_app.fragments.AgregarEjercicioFragment"
+        android:label="Agregar ejercicio"
+        tools:layout="@layout/fragment_agregar_ejercicio" >
+        <argument
+            android:name="ejercicioId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="0000" />
+        <action
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/agregarRutinaActualFragment"
+            android:id="@+id/action_agregarEjercicioFragment_to_agregarRutinaActualFragment"
+            app:destination="@id/agregarRutinaActualFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleRutinaActualFragment"
+        android:name="com.example.ejercicio_app.fragments.DetalleRutinaActualFragment"
+        android:label="Rutina"
+        tools:layout="@layout/fragment_detalle_rutina_actual" >
+        <action
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/rutinasActualesFragment"
+            android:id="@+id/action_detalleRutinaActualFragment_to_rutinasActualesFragment"
+            app:destination="@id/rutinasActualesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleEjercicioFragment"
+        android:name="com.example.ejercicio_app.fragments.DetalleEjercicioFragment"
+        android:label="Ejercicio"
+        tools:layout="@layout/fragment_detalle_ejercicio" />
+</navigation>

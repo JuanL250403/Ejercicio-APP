@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/inicioFragment"
+        android:icon="@drawable/ic_home_inicio"
+        android:title="Inicio" />
+    <item
+        android:id="@+id/rutinasActualesFragment"
+        android:icon="@drawable/ic_pesa_inicio"
+        android:title="Rutinas" />
+    <item
+        android:id="@+id/historial"
+        android:icon="@drawable/ic_calendario"
+        android:title="Historial" />
+    <item
+        android:id="@+id/perfil"
+        android:icon="@drawable/ic_perfil_inicio"
+        android:title="Perfil" />
+
+</menu>

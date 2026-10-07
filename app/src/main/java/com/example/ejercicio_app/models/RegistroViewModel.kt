@@ -6,10 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ejercicio_app.R
-import com.example.ejercicio_app.data.Recurso
-import com.example.ejercicio_app.data.request.UsuarioRegistro
-import com.example.ejercicio_app.network.services.UsuarioService
-import com.example.ejercicio_app.repository.AuthRepository
+import com.example.ejercicio_app.data.network.dto.Recurso
+import com.example.ejercicio_app.data.network.dto.request.UsuarioRegistro
+import com.example.ejercicio_app.data.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.launch

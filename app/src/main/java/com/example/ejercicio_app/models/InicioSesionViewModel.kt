@@ -1,16 +1,13 @@
 package com.example.ejercicio_app.models
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ejercicio_app.R
-import com.example.ejercicio_app.data.Recurso
-import com.example.ejercicio_app.data.request.UsuarioInicioSesion
-import com.example.ejercicio_app.network.TokenManager
-import com.example.ejercicio_app.network.services.AuthService
-import com.example.ejercicio_app.repository.AuthRepository
+import com.example.ejercicio_app.data.network.dto.Recurso
+import com.example.ejercicio_app.data.network.dto.request.UsuarioInicioSesion
+import com.example.ejercicio_app.data.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.launch

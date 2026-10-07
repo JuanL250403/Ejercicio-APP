@@ -6,19 +6,32 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
+import com.auth0.jwt.JWT
+import com.example.ejercicio_app.data.network.TokenManager
 import com.example.ejercicio_app.databinding.ActivityInicioSesionBinding
 import com.example.ejercicio_app.models.InicioSesionViewModel
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Date
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class InicioSesion : AppCompatActivity() {
+    @Inject
+    lateinit var tkManger: TokenManager
+
     private lateinit var binding: ActivityInicioSesionBinding
 
     private val vm: InicioSesionViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if(sesionActiva()) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         binding = ActivityInicioSesionBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -45,7 +58,7 @@ class InicioSesion : AppCompatActivity() {
 
         vm.validado.observe(this, {validado ->
             if (validado) {
-                val intent = Intent(this, Inicio::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -77,6 +90,14 @@ class InicioSesion : AppCompatActivity() {
     fun removerValidacionCampo(input: TextInputLayout) {
         input.error = null
         input.isErrorEnabled = false
+    }
+
+    fun sesionActiva(): Boolean {
+        val token = JWT.decode(tkManger.obtenerToken())
+
+        val expiracion = token.expiresAt ?: return false
+
+        return expiracion.after(Date())
     }
 
 }

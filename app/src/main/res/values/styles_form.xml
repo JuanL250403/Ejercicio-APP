@@ -32,8 +32,41 @@
     <style name="Form_Button_Incio_Entrenamiento">
         <item name="borderRound">5dp</item>
         <item name="android:fontFamily">@font/inter</item>
-        <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Form_Button_Flotante_texto">
+        <item name="borderRound">5dp</item>
+        <item name="backgroundTint">@color/primario</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Form_Button_Categoria_Parte_Anatomica">
+        <item name="android:padding">15dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/terciario</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Form_Button_Categoria_Ejercicio">
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingVertical">30dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+    
+    <style name="Form_Button_Eliminar">
+        <item name="android:paddingHorizontal">10dp</item>
+        <item name="android:textColor">@color/rojo</item>
+        <item name="android:paddingVertical">5dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/rojo</item>
+        <item name="backgroundTint">@color/terciario</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:gravity">center</item>
     </style>
 </resources>

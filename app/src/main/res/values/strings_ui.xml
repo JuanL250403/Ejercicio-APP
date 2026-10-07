@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nombre">Nombre completo</string>
+    <string name="Correo">Correo electrónico</string>
+    <string name="fecha_nacimiento">FechaNacimiento</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="peso">Peso (kg)</string>
+    <string name="altura">Altura (cm)</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="sinCuenta">¿Aun no tienes una cuenta?</string>
+    <string name="entrar">Entrar</string>
+    <string name="iniciar_sesion">Iniciar sesion</string>
+    <string name="buscar_ruitna">Buscar rutina...</string>
+    <string name="buscar_ejercicio">Buscar ejercicio...</string>
+    <string name="tu_seleccion">Tu seleccion</string>
+    <string name="ejercicios">Ejercicios</string>
+    <string name="agregar">Agregar</string>
+
+    <string name="rutina_hoy">Rutina de hoy</string>
+    <string name="iniciar_entrenamiento">Iniciar entrenamiento</string>
+    <string name="calendario">Calendario de entrenamiento</string>
+    <string name="gestion_rutinas">Gestión de rutinas</string>
+    <string name="historial">Historial de entrenamientos</string>
+    <string name="sin_rutina_hoy">Sin rutina disponible</string>
+
+    <string name="registro_bienvenida_descripcion">Necesitamos algunos datos básicos</string>
+    <string name="inicio_bienvenida">Bienvenido de nuevo</string>
+    <string name="inicio_bienvenida_descripcion">Introduce tus credenciales para continuar entrenando</string>
+    <string name="registro_bienvenida">Comienza tu evolución</string>
+
+    <string name="tren_superior">Tren superior</string>
+    <string name="tren_inferior">Tren inferior</string>
+    <string name="cuerpo_completo">Cuerpo completo</string>
+
+    <string name="series_layout">Series</string>
+    <string name="repeticiones_layout">Repeticiones</string>
+    <string name="peso_layout">Peso</string>
+    <string name="descanso_layout">Descanso</string>
+
+    <string name="agregar_ejercicio">Agregar ejercicio</string>
+
+    <string name="eliminar">Eliminar</string>
+</resources>

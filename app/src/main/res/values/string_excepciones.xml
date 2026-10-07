@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_conexion">Ocurrio un error de conexión</string>
+    <string name="rutinas_sincronizadas">Rutinas sincronizadas</string>
+
+    <string name="usuario_registrado">Usuario registrado</string>
+    <string name="correo_registrado">El correo ya se encuentra registrado</string>
+    <string name="sesion_iniciada">Usuario autenticado</string>
+    <string name="credenciales_invalidas">Credenciales incorrectas</string>
+
+    <string name="navegacion_inicio">Inicio</string>
+    <string name="navegacion_rutina">Rutina</string>
+    <string name="navegacion_calendario">Calendario</string>
+    <string name="navegacion_perfil">Perfil</string>
+
+    <string name="rutinas_pantalla">Rutinas registradas</string>
+
+
+    <string name="nombre_vacio">El nombre no puede estar vacio</string>
+
+    <string name="fecha_nacimiento_vacio">La fecha de nacimiento no puede estar vacia</string>
+    <string name="fecha_nacimiento_invalida">La fecha de nacimiento no es valida</string>
+
+    <string name="peso_invalido">El peso no es valido</string>
+
+    <string name="altura_invalida">La altura no es valida</string>
+
+    <string name="correo_invalido">Formato de correo invalido</string>
+    <string name="correo_vacio">El correo no puede estar vacio</string>
+
+    <string name="contrasena_vacia">La contraseña no puede estar vacia</string>
+
+    <string name="nombre_rutina_vacio">El nombre de rutina no puede estar vacio</string>
+    <string name="parte_anatomica_vacia">La parte anatómica es requerida</string>
+    <string name="ejercicios_vacios">Agregue por lo menos un ejercicio</string>
+    <string name="series_invalida">La cantidad de series es invalida</string>
+    <string name="descanso_invalido">El tiempo de descanso es invalido</string>
+    <string name="reps_invalidas">La cantidad de repeticiones no es valida</string>
+
+    <string name="rutina_inexistente">La rutina que buscas no existe</string>
+    <string name="ejercicio_inexistente">El ejercicio que buscas no existe</string>
+</resources>

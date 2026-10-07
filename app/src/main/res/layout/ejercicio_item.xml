@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://android.com"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app1="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="16dp"
+    android:clickable="true"
+    app:cardElevation="4dp"
+    android:layout_margin="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+
+        <!-- Imagen del ejercicio (Squat) -->
+
+        <!-- Botón o icono de eliminar (arriba a la derecha sobre la imagen)
+        <ImageButton
+            android:id="@+id/btnEliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/ivEjercicio"
+            android:layout_alignEnd="@id/ivEjercicio"
+            android:layout_margin="12dp" /> -->
+
+        <!-- Título: SQUAT TRADICIONAL -->
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivEjercicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="17dp"
+            android:adjustViewBounds="true"
+            app1:shapeAppearanceOverlay="@style/Layout_img_redondeada" />
+
+        <TextView
+            style="@style/Texto_Titulo_Resaltado_Card"
+            android:id="@+id/tvNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivEjercicio"
+            android:layout_marginTop="16dp"
+            android:text="SQUAT TRADICIONAL" />
+
+        <!-- Subtítulo: PIERNAS, CUÁDRICEPS... -->
+
+
+        <!-- CONTENEDOR DE LA REJILLA INFERIOR (2x2) -->
+        <LinearLayout
+            android:id="@+id/llContenedorDatos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivEjercicio"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <!-- COLUMNA IZQUIERDA (Series y Peso) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:orientation="vertical"
+                android:layout_marginEnd="8dp">
+
+                <!-- Bloque Series -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/series_layout" />
+                    <TextView android:layout_width="wrap_content" android:id="@+id/tvSeries" android:layout_height="wrap_content" style="@style/Texto_Numero_Ejercicio_Card" android:text="4" />
+                </LinearLayout>
+
+                <!-- Bloque Peso -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/peso_layout" />
+                    <TextView android:layout_width="wrap_content" android:id="@+id/tvPeso" android:layout_height="wrap_content" style="@style/Texto_Numero_Ejercicio_Card" android:text="80kg" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- COLUMNA DERECHA (Reps y Descanso) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+
+                <!-- Bloque Reps -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="16dp">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/repeticiones_layout" />
+                    <TextView android:layout_width="wrap_content" android:id="@+id/tvReps" android:layout_height="wrap_content" style="@style/Texto_Numero_Ejercicio_Card" android:text="12" />
+                </LinearLayout>
+
+                <!-- Bloque Descanso -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/descanso_layout" />
+                    <TextView android:layout_width="wrap_content" android:id="@+id/tvDescanso" android:layout_height="wrap_content" style="@style/Texto_Numero_Ejercicio_Card" android:text="90s" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
