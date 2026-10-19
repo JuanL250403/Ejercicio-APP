@@ -2,7 +2,9 @@ package com.example.ejercicio_app.data.network
 
 import com.example.ejercicio_app.BuildConfig
 import com.example.ejercicio_app.data.network.services.AuthService
+import com.example.ejercicio_app.data.network.services.DiaSemanaService
 import com.example.ejercicio_app.data.network.services.RutinaActualService
+import com.example.ejercicio_app.data.network.services.RutinaRealizadaService
 import com.example.ejercicio_app.data.network.services.UsuarioService
 import dagger.Module
 import dagger.Provides
@@ -59,4 +61,14 @@ object RetrofitModule {
     @Singleton
     fun provideRutinaActualService(@AuthRetrofit retrofit: Retrofit): RutinaActualService = retrofit.create(
         RutinaActualService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideDiaSemanaService(@AuthRetrofit retrofit: Retrofit): DiaSemanaService = retrofit.create(
+        DiaSemanaService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideRutinaRealizadaService(@AuthRetrofit retrofit: Retrofit): RutinaRealizadaService = retrofit.create(
+        RutinaRealizadaService::class.java)
 }

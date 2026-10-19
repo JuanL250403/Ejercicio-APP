@@ -166,6 +166,7 @@
 
                     <TextView
                         android:layout_gravity="center"
+                        android:id="@+id/btnHistorial"
                         style="@style/Texto_Descripcion_Opcion_Card"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

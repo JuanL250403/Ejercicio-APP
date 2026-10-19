@@ -6,14 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ejercicio_app.data.network.dto.Recurso
 import com.example.ejercicio_app.data.repository.EjercicioActualRepository
-import com.example.ejercicio_app.data.repository.EjercicioRepository
 import com.example.ejercicio_app.data.ui.EjercicioActualUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.launch
 
 @HiltViewModel
-class DetalleEjercicioViewModel @Inject constructor(
+class DetalleEjercicioActualViewModel @Inject constructor(
     private val ejercicioActualRepository: EjercicioActualRepository
 ) : ViewModel() {
 

@@ -88,11 +88,10 @@ class DetalleRutinaActualFragment : Fragment() {
         }
 
         findNavController().navigate(
-            R.id.detalleEjercicioFragment,
+            R.id.action_detalleRutinaActualFragment_to_detalleEjercicioFragment,
             datos
         )
     }
-
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

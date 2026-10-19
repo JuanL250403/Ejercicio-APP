@@ -10,12 +10,19 @@
         android:icon="@drawable/ic_pesa_inicio"
         android:title="Rutinas" />
     <item
-        android:id="@+id/historial"
+        android:id="@+id/calendarioEntrenamientoFragment"
         android:icon="@drawable/ic_calendario"
-        android:title="Historial" />
+        android:title="Calendario" />
+    <item
+        android:id="@+id/historialEntrenamientoFragment"
+        android:icon="@drawable/ic_historial_inicio"
+        android:title="Historial"
+        />
+
     <item
         android:id="@+id/perfil"
         android:icon="@drawable/ic_perfil_inicio"
         android:title="Perfil" />
+
 
 </menu>

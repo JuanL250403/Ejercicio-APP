@@ -4,9 +4,12 @@ import android.content.Context
 import androidx.room3.Database
 import androidx.room3.Room
 import androidx.sqlite.driver.AndroidSQLiteDriver
+import com.example.ejercicio_app.data.local.dao.DiasSemanaDao
 import com.example.ejercicio_app.data.local.dao.EjercicioActualDao
 import com.example.ejercicio_app.data.local.dao.EjercicioDataSetDao
+import com.example.ejercicio_app.data.local.dao.EjercicioRealizadoDao
 import com.example.ejercicio_app.data.local.dao.RutinaActualDao
+import com.example.ejercicio_app.data.local.dao.RutinaRealizadaDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,9 +27,9 @@ object AppDatabaseModule {
     fun provideDbInstance(
         @ApplicationContext context: Context
     ): AppDatabase {
-        return Room.databaseBuilder<AppDatabase>(context,"ejercicio_db")
+        return Room.databaseBuilder<AppDatabase>(context, "ejercicio_db")
             .setDriver(AndroidSQLiteDriver())
-            .fallbackToDestructiveMigration()
+            .createFromAsset("data/ejercicio_db")
             .build()
     }
 
@@ -46,5 +49,23 @@ object AppDatabaseModule {
     @Singleton
     fun provideEjercicioActualDao(db: AppDatabase): EjercicioActualDao {
         return db.ejercicioActualDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideDiaSemanaDao(db: AppDatabase): DiasSemanaDao {
+        return db.diasSemanaDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideRutinaRealizadaDao(db: AppDatabase): RutinaRealizadaDao {
+        return db.rutinaRealizadaDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideEjercicioRealizadoDao(db: AppDatabase): EjercicioRealizadoDao {
+        return db.ejercicioRealizadoDao()
     }
 }

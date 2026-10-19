@@ -39,4 +39,5 @@
 
     <string name="rutina_inexistente">La rutina que buscas no existe</string>
     <string name="ejercicio_inexistente">El ejercicio que buscas no existe</string>
+    <string name="dia_inexistente">El dia que buscas no existe</string>
 </resources>

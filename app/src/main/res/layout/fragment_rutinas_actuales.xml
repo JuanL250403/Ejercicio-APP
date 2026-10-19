@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            style="@style/Layout_Main"
+            style="@style/Layout_Main_Listado"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -37,6 +37,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvListaRutinas"
+                style="@style/Layout_rv"
+                tools:listitem="@layout/rutina_item"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -49,10 +51,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fabSize="auto"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:maxImageSize="60dp" />
+            app:maxImageSize="40dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

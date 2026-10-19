@@ -8,25 +8,26 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.ejercicio_app.R
-import com.example.ejercicio_app.databinding.FragmentDetalleEjercicioBinding
-import com.example.ejercicio_app.models.DetalleEjercicioViewModel
+import com.example.ejercicio_app.databinding.FragmentDetalleEjercicioRealizadoBinding
+import com.example.ejercicio_app.models.DetalleEjercicioActualViewModel
+import com.example.ejercicio_app.models.DetalleEjercicioRealizadoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.collections.withIndex
 
 @AndroidEntryPoint
-class DetalleEjercicioFragment : Fragment() {
+class DetalleEjercicioRealizadoFragment : Fragment() {
 
-    private var _binding: FragmentDetalleEjercicioBinding? = null
+    private var _binding: FragmentDetalleEjercicioRealizadoBinding? = null
 
     private val binding get() = _binding!!
 
-    private val vm: DetalleEjercicioViewModel by viewModels()
+    private val vm: DetalleEjercicioRealizadoViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentDetalleEjercicioBinding.inflate(inflater, container, false)
+        _binding = FragmentDetalleEjercicioRealizadoBinding.inflate(inflater, container, false)
         return binding.root
 
     }

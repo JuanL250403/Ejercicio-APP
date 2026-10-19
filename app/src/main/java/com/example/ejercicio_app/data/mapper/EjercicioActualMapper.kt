@@ -6,6 +6,7 @@ import com.example.ejercicio_app.data.local.entity.relations.EjercicioActualDeta
 import com.example.ejercicio_app.data.network.dto.request.EjercicioActualRequest
 import com.example.ejercicio_app.data.network.dto.response.EjercicoActualResponse
 import com.example.ejercicio_app.data.ui.EjercicioActualUiModel
+import com.example.ejercicio_app.data.ui.EjercicioRealizadoUiModel
 
 fun EjercicoActualResponse.toEntity(): EjercicioActualEntity = EjercicioActualEntity(
     id = this.id,
@@ -56,4 +57,14 @@ fun EjercicioActualDetalle.toRequest(): EjercicioActualRequest =
         descanso = this.ejercicio.info.descanso,
         tiempo = this.ejercicio.info.tiempo,
         peso = this.ejercicio.info.peso,
+    )
+
+fun EjercicioActualUiModel.toRealizadoUiModel(): EjercicioRealizadoUiModel =
+    EjercicioRealizadoUiModel(
+        ejercicio = this.ejercicio,
+        series = this.series,
+        repeticiones = this.repeticiones,
+        descanso = this.descanso,
+        tiempo = this.tiempo,
+        peso = this.peso,
     )

@@ -2,15 +2,15 @@ package com.example.ejercicio_app.data.mapper
 
 import com.example.ejercicio_app.data.local.entity.DetalleRutinaActualEntity
 import com.example.ejercicio_app.data.local.entity.relations.DetallesEjerciciosActuales
-import com.example.ejercicio_app.data.local.entity.relations.RutinaActualDetalle
 import com.example.ejercicio_app.data.network.dto.request.DetalleRutinaActualRequest
 import com.example.ejercicio_app.data.network.dto.response.DetalleRuitnaActualResponse
 import com.example.ejercicio_app.data.ui.DetalleRutinaActualUiModel
+import com.example.ejercicio_app.data.ui.DetalleRutinaRealizadaUiModel
 
 fun DetalleRuitnaActualResponse.toEntity(rutinaId: String): DetalleRutinaActualEntity =
     DetalleRutinaActualEntity(
         id = this.id,
-        rutinaActualId = rutinaId,
+        rutinaRealizadaId = rutinaId,
         ejercicioActualId = this.ejercicio.id
     )
 
@@ -33,6 +33,13 @@ fun DetallesEjerciciosActuales.toRequest(): DetalleRutinaActualRequest =
     DetalleRutinaActualRequest(
         id = this.detalle.id,
         ejercicio = this.ejercicio.toRequest()
+    )
+
+fun List<DetalleRutinaActualUiModel>.toRealizadaUiModel(): List<DetalleRutinaRealizadaUiModel> = this.map { d -> d.toRealizadaUiModel() }
+
+fun DetalleRutinaActualUiModel.toRealizadaUiModel(): DetalleRutinaRealizadaUiModel =
+    DetalleRutinaRealizadaUiModel(
+        ejercicio = this.ejercicio.toRealizadoUiModel()
     )
 
 

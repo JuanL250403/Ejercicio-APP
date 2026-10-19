@@ -4,6 +4,16 @@
         <item name="android:padding">20dp</item>
     </style>
 
+    <style name="Layout_Main_Listado">
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingTop">20dp</item>
+    </style>
+
+    <style name="Layout_rv">
+        <item name="android:padding">5dp</item>
+    </style>
+
+
     <style name="Card_Inicio_Entrenamiento" parent="Widget.MaterialComponents.CardView">
         <item name="strokeColor">@color/primario</item>
         <item name="android:padding">200dp</item>
@@ -80,5 +90,20 @@
         <item name="android:paddingHorizontal">20dp</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:background">@color/terciario</item>
+    </style>
+
+    <style name="Layout_Card_Dia_Semana">
+        <item name="android:layout_margin">10dp</item>
+        <item name="strokeColor">@color/primario</item>
+        <item name="android:paddingVertical">10dp</item>
+        <item name="android:paddingHorizontal">15dp</item>
+    </style>
+    <style name="Layout_Estado_Dia">
+        <item name="strokeColor">@color/primario</item>
+        <item name="cardBackgroundColor">#373E1F</item>
+    </style>
+    <style name="Card_Cronometro">
+        <item name="android:layout_margin">10dp</item>
+        <item name="backgroundColor">@color/terciario</item>
     </style>
 </resources>

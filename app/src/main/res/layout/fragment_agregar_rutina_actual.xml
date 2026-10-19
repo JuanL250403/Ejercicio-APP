@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.AgregarRutinaActualFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
-            style="@style/Layout_Main"
+            style="@style/Layout_Main_Listado"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -20,8 +21,8 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Form_InputOutline"
                 android:id="@+id/ltNombreRutina"
+                style="@style/Form_InputOutline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nombre de rutina">
@@ -39,15 +40,15 @@
                 android:rowCount="2">
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnTrenSup"
                     style="@style/Form_Button_Categoria_Ejercicio"
                     android:layout_width="0dp"
-                    android:id="@+id/btnTrenSup"
-                    android:clickable="true"
                     android:layout_height="wrap_content"
                     android:layout_row="0"
                     android:layout_column="0"
                     android:layout_columnWeight="1"
-                    android:layout_gravity="fill_horizontal">
+                    android:layout_gravity="fill_horizontal"
+                    android:clickable="true">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -59,14 +60,14 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
-                   style="@style/Form_Button_Categoria_Ejercicio"
-                    android:layout_width="0dp"
                     android:id="@+id/btnTrenInf"
-                    android:clickable="true"
+                    style="@style/Form_Button_Categoria_Ejercicio"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
                     android:layout_columnWeight="1"
-                    android:layout_gravity="fill_horizontal">
+                    android:layout_gravity="fill_horizontal"
+                    android:clickable="true">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -77,16 +78,16 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/btnCuerpoComp"
                     style="@style/Form_Button_Categoria_Ejercicio"
                     android:layout_width="0dp"
-                    android:id="@+id/btnCuerpoComp"
                     android:layout_height="wrap_content"
                     android:layout_row="1"
-                    android:clickable="true"
                     android:layout_column="0"
                     android:layout_columnSpan="2"
                     android:layout_columnWeight="1"
-                    android:layout_gravity="fill_horizontal">
+                    android:layout_gravity="fill_horizontal"
+                    android:clickable="true">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -126,34 +127,24 @@
             </RelativeLayout>
 
 
-            <ScrollView
-                android:id="@+id/svContendio"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvEjercicios"
+                style="@style/Layout_rv"
+                tools:listitem="@layout/ejercicio_item"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="none"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_weight="1">
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvEjercicios"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-            </ScrollView>
+                android:layout_height="wrap_content" />
 
 
         </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_margin="15dp"
-        android:id="@+id/btnGuardar"
-        style="@style/Form_Button_Flotante_texto"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="Guardar"
-        android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/btnGuardar"
+            style="@style/Form_Button_Flotante_texto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="Guardar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

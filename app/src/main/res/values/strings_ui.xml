@@ -40,4 +40,10 @@
     <string name="agregar_ejercicio">Agregar ejercicio</string>
 
     <string name="eliminar">Eliminar</string>
+    <string name="agregar_rutina">Agregar rutina</string>
+
+    <string name="realizado_en">Realizado en:</string>
+
+    <string name="rutinas_realizadas">Rutinas realizadas</string>
+    <string name="terminar_rutina">Terminar rutina</string>
 </resources>

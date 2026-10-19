@@ -1,10 +1,17 @@
 package com.example.ejercicio_app.data.local
 
+import android.content.Context
 import androidx.room3.Database
+import androidx.room3.Room
 import androidx.room3.RoomDatabase
+import androidx.sqlite.SQLiteConnection
+import androidx.sqlite.execSQL
+import com.example.ejercicio_app.data.local.dao.DiasSemanaDao
 import com.example.ejercicio_app.data.local.dao.EjercicioActualDao
 import com.example.ejercicio_app.data.local.dao.EjercicioDataSetDao
+import com.example.ejercicio_app.data.local.dao.EjercicioRealizadoDao
 import com.example.ejercicio_app.data.local.dao.RutinaActualDao
+import com.example.ejercicio_app.data.local.dao.RutinaRealizadaDao
 import com.example.ejercicio_app.data.local.entity.DetalleRutinaActualEntity
 import com.example.ejercicio_app.data.local.entity.DetalleRutinaRealizadaEntity
 import com.example.ejercicio_app.data.local.entity.DiaSemanaRutinaActualEntity
@@ -25,11 +32,18 @@ import com.example.ejercicio_app.data.local.entity.RutinaRealizadaEntity
         DiaSemanaRutinaActualEntity::class,
         EjercicioDataSet::class
     ],
-    version = 2
+    version = 1
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun rutinaActualDao(): RutinaActualDao
     abstract fun ejercicioDatasetDao(): EjercicioDataSetDao
 
     abstract fun ejercicioActualDao(): EjercicioActualDao
+
+    abstract fun diasSemanaDao(): DiasSemanaDao
+
+    abstract fun rutinaRealizadaDao(): RutinaRealizadaDao
+
+    abstract fun ejercicioRealizadoDao(): EjercicioRealizadoDao
+
 }

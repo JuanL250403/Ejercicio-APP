@@ -27,7 +27,7 @@ class InicioSesion : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if(sesionActiva()) {
+        if (sesionActiva()) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -56,7 +56,7 @@ class InicioSesion : AppCompatActivity() {
             Toast.makeText(this@InicioSesion, getString(estado), Toast.LENGTH_SHORT).show()
         })
 
-        vm.validado.observe(this, {validado ->
+        vm.validado.observe(this, { validado ->
             if (validado) {
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
@@ -93,11 +93,24 @@ class InicioSesion : AppCompatActivity() {
     }
 
     fun sesionActiva(): Boolean {
-        val token = JWT.decode(tkManger.obtenerToken())
 
-        val expiracion = token.expiresAt ?: return false
+        try {
 
-        return expiracion.after(Date())
+            val tokenRaw = tkManger.obtenerToken()
+
+            if (tokenRaw.isNullOrBlank() || tokenRaw.split(".").size != 3) {
+                return false
+            }
+
+            val token = JWT.decode(tokenRaw)
+            val expiracion = token.expiresAt ?: return false
+
+            return expiracion.after(Date())
+
+        } catch (e: Exception) {
+            return false
+        }
+
     }
 
 }

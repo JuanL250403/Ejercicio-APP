@@ -37,6 +37,14 @@ class InicioFragment : Fragment() {
         binding.btnRutinas.setOnClickListener {
             navegarOpcion(R.id.rutinasActualesFragment)
         }
+
+        binding.btnCalendario.setOnClickListener {
+            navegarOpcion(R.id.calendarioEntrenamientoFragment)
+        }
+
+        binding.btnHistorial.setOnClickListener {
+            navegarOpcion(R.id.historialEntrenamientoFragment)
+        }
     }
 
     private fun navegarOpcion(fragmentId: Int) {

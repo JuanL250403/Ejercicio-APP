@@ -10,7 +10,7 @@ data class RutinaActualDetalle(
     @Relation(
         entity = DetalleRutinaActualEntity::class,
         parentColumns = ["id"],
-        entityColumns = ["rutinaActualId"]
+        entityColumns = ["rutinaRealizadaId"]
     )
     val detalles: List<DetallesEjerciciosActuales>
 )

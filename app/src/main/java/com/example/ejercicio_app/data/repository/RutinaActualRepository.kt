@@ -5,7 +5,6 @@ import com.example.ejercicio_app.R
 import com.example.ejercicio_app.data.local.dao.RutinaActualDao
 import com.example.ejercicio_app.data.local.entity.DetalleRutinaActualEntity
 import com.example.ejercicio_app.data.local.entity.EjercicioActualEntity
-import com.example.ejercicio_app.data.local.entity.relations.RutinaActualDetalle
 import com.example.ejercicio_app.data.mapper.toEntity
 import com.example.ejercicio_app.data.mapper.toRequest
 import com.example.ejercicio_app.data.mapper.toUiModel
@@ -24,27 +23,24 @@ class RutinaActualRepository @Inject constructor(
     fun obtenerRutinas(nombre: String? = ""): Flow<Recurso<List<RutinaActualUiModel>>> = flow {
         emit(Recurso.Cargando)
 
-        try {
-            obtenerRutinasRemotas()
-        }
-        catch (e: Exception) {
-            Log.d("excpecion", e.message.toString())
-        }
+        obtenerRutinasRemotas()
 
-        var rutinasBd: List<RutinaActualUiModel>
+        var rutinas: List<RutinaActualUiModel>
 
-        if(!nombre.isNullOrBlank()) {
-            rutinasBd = rutinaActualDao.obtenerRutinasDetalleNombre(nombre).toUiModel()
+        if (!nombre.isNullOrBlank()) {
+            rutinas = rutinaActualDao.obtenerRutinasDetalleNombre(nombre).toUiModel()
         } else {
-            rutinasBd = rutinaActualDao.obtenerRutinasDetalle().toUiModel()
+            rutinas = rutinaActualDao.obtenerRutinasDetalle().toUiModel()
         }
 
-        emit(Recurso.Exito(rutinasBd))
+        emit(Recurso.Exito(rutinas))
 
     }
 
     fun obtenerRutina(id: String): Flow<Recurso<RutinaActualUiModel>> = flow {
         emit(Recurso.Cargando)
+        obtenerRutinasRemotas()
+
         val rutina = rutinaActualDao.obtenerRutinaDetalle(id)
 
         if (rutina == null) {
@@ -64,7 +60,7 @@ class RutinaActualRepository @Inject constructor(
 
         val detalles = ejercicios.map { e ->
             DetalleRutinaActualEntity(
-                rutinaActualId = rutinaEntity.id,
+                rutinaRealizadaId = rutinaEntity.id,
                 ejercicioActualId = e.id
             )
         }
@@ -86,8 +82,11 @@ class RutinaActualRepository @Inject constructor(
 
         try {
 
-            rutinaActualDao.eliminarRutina(rutinaEliminar!!.rutina.id, detallesIds, ejerciciosIds)
-
+            rutinaActualDao.eliminarRutina(
+                rutinaEliminar!!.rutina.id,
+                detallesIds,
+                ejerciciosIds,
+            )
 
             enviarRutinas()
 
@@ -98,7 +97,7 @@ class RutinaActualRepository @Inject constructor(
         emit(Recurso.Exito(1))
     }
 
-    suspend fun obtenerRutinasRemotas(): Flow<Recurso<Int>> = flow {
+    suspend fun obtenerRutinasRemotas() {
 
         try {
 
@@ -116,7 +115,7 @@ class RutinaActualRepository @Inject constructor(
                     detalles.addAll(r.detalle.toEntity(r.id))
                 }
 
-                rutinaActualDao.sincronizarRutina(
+                rutinaActualDao.guardarRutinas(
                     rutinas.toEntity(),
                     ejercicios.toList(),
                     detalles.toList()
@@ -124,10 +123,8 @@ class RutinaActualRepository @Inject constructor(
 
             }
         } catch (e: Exception) {
-            emit(Recurso.Error(1))
+            Log.d("rutinas", e.message.toString())
         }
-
-        emit(Recurso.Exito(1))
 
     }
 

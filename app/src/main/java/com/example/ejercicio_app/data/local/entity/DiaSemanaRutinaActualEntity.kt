@@ -19,6 +19,6 @@ import java.util.UUID
 data class DiaSemanaRutinaActualEntity(
     @PrimaryKey val id: String = UUID.randomUUID().toString(),
     val diaSemana: Int,
-    val rutinaActualId: UUID,
+    val rutinaActualId: String,
     val estado: Boolean
 )

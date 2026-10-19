@@ -11,7 +11,7 @@ import java.util.UUID
         ForeignKey(
             entity = RutinaActualEntity::class,
             parentColumns = ["id"],
-            childColumns = ["rutinaActualId"]
+            childColumns = ["rutinaRealizadaId"]
         ),
         ForeignKey(
             entity = EjercicioActualEntity::class,
@@ -23,6 +23,6 @@ import java.util.UUID
 data class DetalleRutinaActualEntity(
     @PrimaryKey val id: String = UUID.randomUUID().toString(),
 
-    val rutinaActualId: String,
+    val rutinaRealizadaId: String,
     val ejercicioActualId: String,
 )

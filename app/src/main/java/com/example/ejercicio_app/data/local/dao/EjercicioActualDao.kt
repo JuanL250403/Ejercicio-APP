@@ -7,5 +7,5 @@ import com.example.ejercicio_app.data.local.entity.relations.EjercicioActualDeta
 @Dao
 interface EjercicioActualDao {
     @Query("SELECT * FROM ejercicios_actuales WHERE id = :id")
-    suspend fun obtenerEjercicioActual(id: String): EjercicioActualDetalle
+    suspend fun obtenerEjercicioActual(id: String): EjercicioActualDetalle?
 }

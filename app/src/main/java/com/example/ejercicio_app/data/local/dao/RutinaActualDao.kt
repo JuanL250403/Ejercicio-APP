@@ -34,8 +34,11 @@ interface RutinaActualDao {
     @Query("DELETE FROM detalles_rutinas_actuales WHERE id IN (:ids)")
     suspend fun eliminarDetalles(ids: List<String>)
 
+    @Query("DELETE FROM dias_semana_rutinas WHERE rutinaActualId = :id")
+    suspend fun eliminarDias(id: String)
+
     @Transaction
-    suspend fun sincronizarRutina(
+    suspend fun guardarRutinas(
         rutinas: List<RutinaActualEntity>,
         ejericicos: List<EjercicioActualEntity>,
         detalles: List<DetalleRutinaActualEntity>
@@ -60,8 +63,9 @@ interface RutinaActualDao {
     suspend fun eliminarRutina(
         rutinaId: String,
         detallesIds: List<String>,
-        ejerciciosIds: List<String>
+        ejerciciosIds: List<String>,
     ) {
+        eliminarDias(rutinaId)
         eliminarDetalles(detallesIds)
         eliminarRutina(rutinaId)
         eliminarEjercicio(ejerciciosIds)

@@ -13,7 +13,6 @@ data class RutinaRealizadaEntity(
     @PrimaryKey val id: String = UUID.randomUUID().toString(),
     @Embedded val info: RutinaInfo,
     val tiempoRealizacion: Int,
-    val estado: Boolean,
     val diaSemena: Int,
     val fechaRealizacion: String = Date().toString()
 )

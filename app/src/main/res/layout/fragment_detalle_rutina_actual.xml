@@ -14,13 +14,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:text="@string/eliminar"
+            android:layout_margin="10dp"
             android:id="@+id/btnEliminar"
             style="@style/Form_Button_Eliminar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
         <LinearLayout
-            style="@style/Layout_Main"
+            style="@style/Layout_Main_Listado"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -72,6 +73,8 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvEjercicios"
+                    style="@style/Layout_rv"
+                    tools:listitem="@layout/ejercicio_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

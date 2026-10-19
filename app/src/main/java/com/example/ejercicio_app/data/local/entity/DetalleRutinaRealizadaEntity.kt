@@ -23,6 +23,6 @@ import java.util.UUID
 data class DetalleRutinaRealizadaEntity(
     @PrimaryKey val id: String = UUID.randomUUID().toString(),
 
-    val rutinaRealizadaId: UUID,
-    val ejercicioRealizadoId: UUID,
+    val rutinaRealizadaId: String,
+    val ejercicioRealizadoId: String,
 )

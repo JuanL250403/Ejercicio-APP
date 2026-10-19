@@ -1,0 +1,89 @@
+package com.example.ejercicio_app.data.repository
+
+import android.util.Log
+import com.example.ejercicio_app.R
+import com.example.ejercicio_app.data.local.dao.DiasSemanaDao
+import com.example.ejercicio_app.data.mapper.toEntity
+import com.example.ejercicio_app.data.mapper.toRequest
+import com.example.ejercicio_app.data.mapper.toUiModel
+import com.example.ejercicio_app.data.network.dto.Recurso
+import com.example.ejercicio_app.data.network.services.DiaSemanaService
+import com.example.ejercicio_app.data.ui.DiaSemanaAgregarUiModel
+import com.example.ejercicio_app.data.ui.DiaSemanaDetalleUiModel
+import com.example.ejercicio_app.data.ui.DiaSemanaUiModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
+
+class DiasSemanaRepository @Inject constructor(
+    private val diasSemanaDao: DiasSemanaDao,
+    private val diasSemanaService: DiaSemanaService
+) {
+
+    fun obtenerDiasSemana(): Flow<Recurso<List<DiaSemanaUiModel>>> = flow {
+        obtenerDiasSemanaRemotas()
+
+        val dias = diasSemanaDao.obtenerDiasSemana()
+
+        emit(Recurso.Exito(dias.toUiModel()))
+    }
+
+    fun obtenerDiaSemana(id: String): Flow<Recurso<DiaSemanaDetalleUiModel>> = flow {
+        emit(Recurso.Cargando)
+        obtenerDiasSemanaRemotas()
+
+        val dia = diasSemanaDao.obtenerDiaSemanaDetalle(id)
+
+        if (dia == null) {
+            emit(Recurso.Error(R.string.ejercicio_inexistente))
+        } else {
+            emit(Recurso.Exito(dia.toUiModel()))
+        }
+    }
+
+    fun guardarDiaSemana(diaSemana: DiaSemanaAgregarUiModel): Flow<Recurso<Int>> = flow {
+        val diaSemanaEntity = diaSemana.toEntity()
+
+        diasSemanaDao.guardarDiaSemana(diaSemanaEntity)
+
+        enviarDiasSemana()
+
+        emit(Recurso.Exito(1))
+    }
+
+    fun eliminarDiaSemana(diaSemanaId: String): Flow<Recurso<Int>> = flow {
+        diasSemanaDao.eliminarDiaSemana(diaSemanaId)
+
+        enviarDiasSemana()
+
+        emit(Recurso.Exito(1))
+    }
+
+    suspend fun obtenerDiasSemanaRemotas() {
+        try {
+
+            val respuesta = diasSemanaService.obtenerDiasSemana(1)
+
+            if (respuesta.isSuccessful && !respuesta.body().isNullOrEmpty()) {
+                diasSemanaDao.guardarDiasSemana(respuesta.body()?.toEntity()!!)
+                Log.d("semana", respuesta.body().toString())
+            }
+
+
+        } catch (e: Exception) {
+            Log.d("semana", e.message.toString())
+        }
+    }
+
+    suspend fun enviarDiasSemana() {
+
+        try {
+            val diasSemanaDb = diasSemanaDao.obtenerDiasSemana()
+
+            diasSemanaService.sincronizarRutinas(1, diasSemanaDb.toRequest())
+
+        } catch (e: Exception) {
+            Log.d("semana", e.message.toString())
+        }
+    }
+}

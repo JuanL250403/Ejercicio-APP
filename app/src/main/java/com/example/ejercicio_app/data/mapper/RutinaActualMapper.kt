@@ -52,3 +52,11 @@ fun RutinaActualDetalle.toRequest(): RutinaActualRequest =
         parteAnatomica = this.rutina.info.parteAnatomica,
         detalle = this.detalles.toRequest()
     )
+
+fun RutinaActualEntity.toUiModel(): RutinaActualUiModel =
+    RutinaActualUiModel(
+        id = this.id,
+        nombre = this.info.nombre,
+        parteAnatomica = this.info.parteAnatomica,
+        listOf()
+    )

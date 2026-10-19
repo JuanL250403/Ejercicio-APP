@@ -66,7 +66,15 @@
         <item name="strokeWidth">1dp</item>
         <item name="strokeColor">@color/rojo</item>
         <item name="backgroundTint">@color/terciario</item>
-        <item name="android:layout_margin">10dp</item>
         <item name="android:gravity">center</item>
     </style>
+
+    <style name="Form_Button_Estado">
+        <item name="iconTint">@color/black</item>
+        <item name="iconSize">27dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="iconPadding">0dp</item>
+    </style>
+
 </resources>
