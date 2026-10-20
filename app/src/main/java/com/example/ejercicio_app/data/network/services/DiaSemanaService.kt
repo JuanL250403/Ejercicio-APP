@@ -9,9 +9,9 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface DiaSemanaService {
-    @GET("api/semana/{id}")
-    suspend fun obtenerDiasSemana(@Path("id") usuarioId: Long): Response<List<DiaSemanaResponse>>
+    @GET("api/semana")
+    suspend fun obtenerDiasSemana(): Response<List<DiaSemanaResponse>>
 
-    @POST("api/semana/{id}")
-    suspend fun sincronizarRutinas(@Path("id") usuarioId: Long, @Body dias: List<DiaSemanaRequest>): Response<List<DiaSemanaResponse>>
+    @POST("api/semana")
+    suspend fun sincronizarRutinas(@Body dias: List<DiaSemanaRequest>): Response<List<DiaSemanaResponse>>
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room3.Database
 import androidx.room3.Room
 import androidx.sqlite.driver.AndroidSQLiteDriver
+import com.example.ejercicio_app.data.local.dao.DatabaseDao
 import com.example.ejercicio_app.data.local.dao.DiasSemanaDao
 import com.example.ejercicio_app.data.local.dao.EjercicioActualDao
 import com.example.ejercicio_app.data.local.dao.EjercicioDataSetDao
@@ -67,5 +68,11 @@ object AppDatabaseModule {
     @Singleton
     fun provideEjercicioRealizadoDao(db: AppDatabase): EjercicioRealizadoDao {
         return db.ejercicioRealizadoDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideDatabaseDao(db: AppDatabase): DatabaseDao {
+        return db.databaseDao()
     }
 }

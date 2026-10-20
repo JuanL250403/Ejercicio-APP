@@ -6,12 +6,16 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
+import androidx.lifecycle.lifecycleScope
 import com.auth0.jwt.JWT
 import com.example.ejercicio_app.data.network.TokenManager
+import com.example.ejercicio_app.data.network.dto.Recurso
+import com.example.ejercicio_app.data.repository.SincronizacionRepository
 import com.example.ejercicio_app.databinding.ActivityInicioSesionBinding
 import com.example.ejercicio_app.models.InicioSesionViewModel
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.util.Date
 import javax.inject.Inject
 
@@ -19,6 +23,9 @@ import javax.inject.Inject
 class InicioSesion : AppCompatActivity() {
     @Inject
     lateinit var tkManger: TokenManager
+
+    @Inject
+    lateinit var sincronizacionRepository: SincronizacionRepository
 
     private lateinit var binding: ActivityInicioSesionBinding
 
@@ -58,9 +65,23 @@ class InicioSesion : AppCompatActivity() {
 
         vm.validado.observe(this, { validado ->
             if (validado) {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+
+                lifecycleScope.launch {
+                    sincronizacionRepository.obtenerDatosRemotos().collect { r ->
+                        when (r) {
+                            is Recurso.Exito -> {
+                                val intent = Intent(this@InicioSesion, MainActivity::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                            else -> null
+                        }
+                    }
+
+                }
+
+
+
             }
         })
 

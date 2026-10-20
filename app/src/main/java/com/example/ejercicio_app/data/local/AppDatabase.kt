@@ -6,6 +6,7 @@ import androidx.room3.Room
 import androidx.room3.RoomDatabase
 import androidx.sqlite.SQLiteConnection
 import androidx.sqlite.execSQL
+import com.example.ejercicio_app.data.local.dao.DatabaseDao
 import com.example.ejercicio_app.data.local.dao.DiasSemanaDao
 import com.example.ejercicio_app.data.local.dao.EjercicioActualDao
 import com.example.ejercicio_app.data.local.dao.EjercicioDataSetDao
@@ -45,5 +46,6 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun rutinaRealizadaDao(): RutinaRealizadaDao
 
     abstract fun ejercicioRealizadoDao(): EjercicioRealizadoDao
+    abstract fun databaseDao(): DatabaseDao
 
 }

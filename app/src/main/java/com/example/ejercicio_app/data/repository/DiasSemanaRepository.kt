@@ -17,7 +17,8 @@ import javax.inject.Inject
 
 class DiasSemanaRepository @Inject constructor(
     private val diasSemanaDao: DiasSemanaDao,
-    private val diasSemanaService: DiaSemanaService
+    private val diasSemanaService: DiaSemanaService,
+    private val rutinaActualRepository: RutinaActualRepository
 ) {
 
     fun obtenerDiasSemana(): Flow<Recurso<List<DiaSemanaUiModel>>> = flow {
@@ -46,6 +47,7 @@ class DiasSemanaRepository @Inject constructor(
 
         diasSemanaDao.guardarDiaSemana(diaSemanaEntity)
 
+        rutinaActualRepository.enviarRutinas()
         enviarDiasSemana()
 
         emit(Recurso.Exito(1))
@@ -54,7 +56,9 @@ class DiasSemanaRepository @Inject constructor(
     fun eliminarDiaSemana(diaSemanaId: String): Flow<Recurso<Int>> = flow {
         diasSemanaDao.eliminarDiaSemana(diaSemanaId)
 
+        rutinaActualRepository.enviarRutinas()
         enviarDiasSemana()
+
 
         emit(Recurso.Exito(1))
     }
@@ -62,7 +66,7 @@ class DiasSemanaRepository @Inject constructor(
     suspend fun obtenerDiasSemanaRemotas() {
         try {
 
-            val respuesta = diasSemanaService.obtenerDiasSemana(1)
+            val respuesta = diasSemanaService.obtenerDiasSemana()
 
             if (respuesta.isSuccessful && !respuesta.body().isNullOrEmpty()) {
                 diasSemanaDao.guardarDiasSemana(respuesta.body()?.toEntity()!!)
@@ -80,7 +84,7 @@ class DiasSemanaRepository @Inject constructor(
         try {
             val diasSemanaDb = diasSemanaDao.obtenerDiasSemana()
 
-            diasSemanaService.sincronizarRutinas(1, diasSemanaDb.toRequest())
+            diasSemanaService.sincronizarRutinas(diasSemanaDb.toRequest())
 
         } catch (e: Exception) {
             Log.d("semana", e.message.toString())

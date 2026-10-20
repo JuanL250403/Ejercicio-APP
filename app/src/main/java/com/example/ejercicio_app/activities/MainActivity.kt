@@ -21,6 +21,7 @@ import com.example.ejercicio_app.R
 import com.example.ejercicio_app.data.repository.DiasSemanaRepository
 import com.example.ejercicio_app.data.repository.RutinaActualRepository
 import com.example.ejercicio_app.data.repository.RutinaRealizadaRepository
+import com.example.ejercicio_app.data.repository.SincronizacionRepository
 import com.example.ejercicio_app.databinding.ActivityMainBinding
 import com.example.ejercicio_app.models.MainConexionViewModel
 import com.example.ejercicio_app.models.RealizarEntrenamientoSharedViewModel
@@ -32,13 +33,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity() {
 
     @Inject
-    lateinit var rutinaActualRepository: RutinaActualRepository
-
-    @Inject
-    lateinit var diasSemanaRepository: DiasSemanaRepository
-
-    @Inject
-    lateinit var rutinaRealizadaRepository: RutinaRealizadaRepository
+    lateinit var sincronizacionRepository: SincronizacionRepository
 
     private lateinit var binding: ActivityMainBinding
 
@@ -107,9 +102,7 @@ class MainActivity : AppCompatActivity() {
 
             if (ec) {
                 lifecycleScope.launch {
-                    rutinaActualRepository.enviarRutinas()
-                    diasSemanaRepository.enviarDiasSemana()
-                    rutinaRealizadaRepository.enviarRutinas()
+                    sincronizacionRepository.enviarDatos()
                 }
             }
         }
@@ -160,6 +153,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.rutinasActualesFragment -> binding.navBottom.visibility = View.VISIBLE
                 R.id.calendarioEntrenamientoFragment -> binding.navBottom.visibility = View.VISIBLE
                 R.id.historialEntrenamientoFragment -> binding.navBottom.visibility = View.VISIBLE
+                R.id.perfilFragment -> binding.navBottom.visibility = View.VISIBLE
                 else -> binding.navBottom.visibility = View.GONE
             }
         }

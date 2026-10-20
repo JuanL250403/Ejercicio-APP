@@ -158,4 +158,8 @@
         android:id="@+id/detalleEjercicioRealizadoFragment"
         android:name="com.example.ejercicio_app.fragments.DetalleEjercicioRealizadoFragment"
         android:label="Ejercicio" />
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.example.ejercicio_app.fragments.PerfilFragment"
+        android:label="Perfil" />
 </navigation>

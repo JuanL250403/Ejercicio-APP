@@ -10,9 +10,9 @@ import retrofit2.http.Path
 
 interface RutinaActualService {
 
-    @GET("api/rutinas/actuales/{id}")
-    suspend fun obtenerRutinasActuales(@Path("id") usuarioId: Long): Response<List<RutinaActualResponse>>
+    @GET("api/rutinas/actuales")
+    suspend fun obtenerRutinasActuales(): Response<List<RutinaActualResponse>>
 
-    @POST("api/rutinas/actuales/{id}")
-    suspend fun sincronizarRutinas(@Path("id")  usuarioId: Long, @Body rutinas: List<RutinaActualRequest>): Response<List<RutinaActualResponse>>
+    @POST("api/rutinas/actuales")
+    suspend fun sincronizarRutinas(@Body rutinas: List<RutinaActualRequest>): Response<List<RutinaActualResponse>>
 }

@@ -6,6 +6,8 @@
     <string name="contrasena">Contraseña</string>
     <string name="peso">Peso (kg)</string>
     <string name="altura">Altura (cm)</string>
+    <string name="edad">Edad</string>
+    <string name="altura_layout">Altura</string>
     <string name="registrarse">Registrarse</string>
     <string name="sinCuenta">¿Aun no tienes una cuenta?</string>
     <string name="entrar">Entrar</string>

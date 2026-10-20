@@ -9,6 +9,6 @@ data class RutinaRealizadaResponse(
     val parteAnatomica: Long,
     val diaSemana: Int,
     val tiempoRealizacion: Int,
-    val fechaRealizacion: LocalDateTime,
+    val fechaRealizacion: String,
     val detalle: List<DetalleRutinaRealizadaResponse>
 )

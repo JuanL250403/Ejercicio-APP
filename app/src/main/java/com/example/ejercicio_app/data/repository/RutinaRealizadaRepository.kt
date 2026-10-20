@@ -92,7 +92,7 @@ class RutinaRealizadaRepository @Inject constructor(
 
         try {
 
-            val respuesta = rutinaRealizadaService.obtenerRutinasRealizadas(1)
+            val respuesta = rutinaRealizadaService.obtenerRutinasRealizadas()
 
             if (respuesta.isSuccessful && respuesta.body() != null) {
                 val rutinas = respuesta.body() ?: listOf()
@@ -125,7 +125,7 @@ class RutinaRealizadaRepository @Inject constructor(
 
             val rutinasDb = rutinaRealizadaDao.obtenerRutinasDetalle()
 
-            rutinaRealizadaService.sincronizarRutinas(1, rutinasDb.toRequest())
+            rutinaRealizadaService.sincronizarRutinas(rutinasDb.toRequest())
 
         } catch (e: Exception) {
             Log.d("rutinas", e.message.toString())

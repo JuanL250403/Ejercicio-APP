@@ -9,9 +9,9 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 interface RutinaRealizadaService {
-    @GET("api/rutinas/realizadas/{id}")
-    suspend fun obtenerRutinasRealizadas(@Path("id") usuarioId: Long): Response<List<RutinaRealizadaResponse>>
+    @GET("api/rutinas/realizadas")
+    suspend fun obtenerRutinasRealizadas(): Response<List<RutinaRealizadaResponse>>
 
-    @POST("api/rutinas/realizadas/{id}")
-    suspend fun sincronizarRutinas(@Path("id") usuarioId: Long, @Body rutinas: List<RutinaRealizadaRequest>)
+    @POST("api/rutinas/realizadas")
+    suspend fun sincronizarRutinas(@Body rutinas: List<RutinaRealizadaRequest>)
 }

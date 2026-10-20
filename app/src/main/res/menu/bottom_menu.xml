@@ -16,13 +16,10 @@
     <item
         android:id="@+id/historialEntrenamientoFragment"
         android:icon="@drawable/ic_historial_inicio"
-        android:title="Historial"
-        />
-
+        android:title="Historial" />
     <item
-        android:id="@+id/perfil"
+        android:id="@+id/perfilFragment"
         android:icon="@drawable/ic_perfil_inicio"
         android:title="Perfil" />
-
 
 </menu>
