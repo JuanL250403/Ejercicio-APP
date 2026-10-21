@@ -10,6 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import com.auth0.jwt.JWT
 import com.example.ejercicio_app.data.network.TokenManager
 import com.example.ejercicio_app.data.network.dto.Recurso
+import com.example.ejercicio_app.data.repository.SesionRepository
 import com.example.ejercicio_app.data.repository.SincronizacionRepository
 import com.example.ejercicio_app.databinding.ActivityInicioSesionBinding
 import com.example.ejercicio_app.models.InicioSesionViewModel
@@ -25,6 +26,9 @@ class InicioSesion : AppCompatActivity() {
     lateinit var tkManger: TokenManager
 
     @Inject
+    lateinit var sesionRepository: SesionRepository
+
+    @Inject
     lateinit var sincronizacionRepository: SincronizacionRepository
 
     private lateinit var binding: ActivityInicioSesionBinding
@@ -38,6 +42,12 @@ class InicioSesion : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
+        } else {
+            lifecycleScope.launch {
+                sincronizacionRepository.eliminarDatos()
+                sesionRepository.cerrarSesion()
+            }
+
         }
 
         binding = ActivityInicioSesionBinding.inflate(layoutInflater)
@@ -74,12 +84,12 @@ class InicioSesion : AppCompatActivity() {
                                 startActivity(intent)
                                 finish()
                             }
+
                             else -> null
                         }
                     }
 
                 }
-
 
 
             }

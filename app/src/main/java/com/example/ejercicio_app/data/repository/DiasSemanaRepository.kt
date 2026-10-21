@@ -11,22 +11,40 @@ import com.example.ejercicio_app.data.network.services.DiaSemanaService
 import com.example.ejercicio_app.data.ui.DiaSemanaAgregarUiModel
 import com.example.ejercicio_app.data.ui.DiaSemanaDetalleUiModel
 import com.example.ejercicio_app.data.ui.DiaSemanaUiModel
+import com.example.ejercicio_app.utils.EstadoConexionService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import java.time.LocalDate
 import javax.inject.Inject
 
 class DiasSemanaRepository @Inject constructor(
     private val diasSemanaDao: DiasSemanaDao,
+    private val estadoConexionService: EstadoConexionService,
     private val diasSemanaService: DiaSemanaService,
     private val rutinaActualRepository: RutinaActualRepository
 ) {
 
     fun obtenerDiasSemana(): Flow<Recurso<List<DiaSemanaUiModel>>> = flow {
+        emit(Recurso.Cargando)
         obtenerDiasSemanaRemotas()
 
         val dias = diasSemanaDao.obtenerDiasSemana()
 
         emit(Recurso.Exito(dias.toUiModel()))
+    }
+
+    fun obtenerRutinaDeDia(): Flow<Recurso<DiaSemanaDetalleUiModel>> = flow {
+        emit(Recurso.Cargando)
+
+        obtenerDiasSemanaRemotas()
+
+        val dia = diasSemanaDao.obtenerRutinaDeDia(LocalDate.now().dayOfWeek.value)
+
+        if (dia == null) {
+            emit(Recurso.Error(R.string.rutina_inexistente))
+        } else {
+            emit(Recurso.Exito(dia.toUiModel()))
+        }
     }
 
     fun obtenerDiaSemana(id: String): Flow<Recurso<DiaSemanaDetalleUiModel>> = flow {
@@ -36,13 +54,14 @@ class DiasSemanaRepository @Inject constructor(
         val dia = diasSemanaDao.obtenerDiaSemanaDetalle(id)
 
         if (dia == null) {
-            emit(Recurso.Error(R.string.ejercicio_inexistente))
+            emit(Recurso.Error(R.string.rutina_inexistente))
         } else {
             emit(Recurso.Exito(dia.toUiModel()))
         }
     }
 
     fun guardarDiaSemana(diaSemana: DiaSemanaAgregarUiModel): Flow<Recurso<Int>> = flow {
+        emit(Recurso.Cargando)
         val diaSemanaEntity = diaSemana.toEntity()
 
         diasSemanaDao.guardarDiaSemana(diaSemanaEntity)
@@ -54,6 +73,7 @@ class DiasSemanaRepository @Inject constructor(
     }
 
     fun eliminarDiaSemana(diaSemanaId: String): Flow<Recurso<Int>> = flow {
+        emit(Recurso.Cargando)
         diasSemanaDao.eliminarDiaSemana(diaSemanaId)
 
         rutinaActualRepository.enviarRutinas()
@@ -64,6 +84,9 @@ class DiasSemanaRepository @Inject constructor(
     }
 
     suspend fun obtenerDiasSemanaRemotas() {
+
+        if(!estadoConexionService.estaConectado.value!!) return
+
         try {
 
             val respuesta = diasSemanaService.obtenerDiasSemana()
@@ -80,6 +103,8 @@ class DiasSemanaRepository @Inject constructor(
     }
 
     suspend fun enviarDiasSemana() {
+
+        if(!estadoConexionService.estaConectado.value!!) return
 
         try {
             val diasSemanaDb = diasSemanaDao.obtenerDiasSemana()

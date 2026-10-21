@@ -7,15 +7,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.ejercicio_app.data.network.dto.Recurso
 import com.example.ejercicio_app.data.repository.DiasSemanaRepository
 import com.example.ejercicio_app.data.ui.DiaSemanaDetalleUiModel
+import com.example.ejercicio_app.utils.EstadoAppService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.time.DayOfWeek
-import java.time.LocalDateTime
 import javax.inject.Inject
 
 @HiltViewModel
 class DiaEntrenamientoViewModel @Inject constructor(
-    private val diasSemanaRepository: DiasSemanaRepository
+    private val diasSemanaRepository: DiasSemanaRepository,
+    private val estadoAppService: EstadoAppService
 ) : ViewModel() {
 
     private val _diaSemana: MutableLiveData<DiaSemanaDetalleUiModel> by lazy {
@@ -60,7 +60,12 @@ class DiaEntrenamientoViewModel @Inject constructor(
         viewModelScope.launch {
             diasSemanaRepository.eliminarDiaSemana(diaSemana.value?.id!!).collect { r ->
                 when(r) {
-                    is Recurso.Exito -> _eliminado.value = true
+                    is Recurso.Cargando -> estadoAppService.estaCargando()
+                    is Recurso.Exito -> {
+                        _eliminado.value = true
+                        estadoAppService.noEstaCargando()
+                    }
+                    is Recurso.Error -> estadoAppService.noEstaCargando()
                     else ->  null
                 }
             }

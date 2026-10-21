@@ -9,6 +9,7 @@ import com.example.ejercicio_app.data.repository.DiasSemanaRepository
 import com.example.ejercicio_app.data.repository.RutinaActualRepository
 import com.example.ejercicio_app.data.ui.DiaSemanaAgregarUiModel
 import com.example.ejercicio_app.data.ui.RutinaActualUiModel
+import com.example.ejercicio_app.utils.EstadoAppService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.launch
@@ -16,6 +17,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class AgregarRutinaDiaViewModel @Inject constructor(
     private val rutinaActualRepository: RutinaActualRepository,
+    private val estadoAppService: EstadoAppService,
     private val diasSemanaRepository: DiasSemanaRepository
 ) : ViewModel() {
 
@@ -61,8 +63,13 @@ class AgregarRutinaDiaViewModel @Inject constructor(
 
         viewModelScope.launch {
             diasSemanaRepository.guardarDiaSemana(diaSemanaCrear).collect { r ->
-                when(r) {
-                    is Recurso.Exito -> _guardado.value = true
+                when (r) {
+                    is Recurso.Cargando -> estadoAppService.estaCargando()
+                    is Recurso.Exito -> {
+                        _guardado.value = true
+                        estadoAppService.noEstaCargando()
+                    }
+                    is Recurso.Error -> estadoAppService.noEstaCargando()
                     else -> null
                 }
             }

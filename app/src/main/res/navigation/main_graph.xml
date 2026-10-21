@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_inicioFragment_to_rutinasActualesFragment"
             app:destination="@id/rutinasActualesFragment" />
+        <action
+            android:id="@+id/action_inicioFragment_to_realizarEntrenamientoFragment"
+            app:destination="@id/realizarEntrenamientoFragment" />
     </fragment>
     <fragment
         android:id="@+id/rutinasActualesFragment"
@@ -91,6 +94,9 @@
         <action
             android:id="@+id/action_calendarioEntrenamientoFragment_to_diaEntrenamientoFragment"
             app:destination="@id/diaEntrenamientoFragment" />
+        <action
+            android:id="@+id/action_calendarioEntrenamientoFragment_to_realizarEntrenamientoFragment"
+            app:destination="@id/realizarEntrenamientoFragment" />
     </fragment>
     <fragment
         android:id="@+id/diaEntrenamientoFragment"

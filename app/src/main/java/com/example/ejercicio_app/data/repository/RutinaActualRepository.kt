@@ -11,12 +11,14 @@ import com.example.ejercicio_app.data.mapper.toUiModel
 import com.example.ejercicio_app.data.network.dto.Recurso
 import com.example.ejercicio_app.data.network.services.RutinaActualService
 import com.example.ejercicio_app.data.ui.RutinaActualUiModel
+import com.example.ejercicio_app.utils.EstadoConexionService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class RutinaActualRepository @Inject constructor(
     private val rutinaActualService: RutinaActualService,
+    private val estadoConexionService: EstadoConexionService,
     private val rutinaActualDao: RutinaActualDao
 ) {
 
@@ -53,6 +55,7 @@ class RutinaActualRepository @Inject constructor(
     }
 
     fun guardarRutina(rutina: RutinaActualUiModel): Flow<Recurso<Int>> = flow {
+        emit(Recurso.Cargando)
 
         val rutinaEntity = rutina.toEntity()
 
@@ -74,6 +77,7 @@ class RutinaActualRepository @Inject constructor(
     }
 
     fun eliminarRutina(id: String): Flow<Recurso<Int>> = flow {
+        emit(Recurso.Cargando)
         val rutinaEliminar = rutinaActualDao.obtenerRutinaDetalle(id)
 
         val detallesIds = rutinaEliminar!!.detalles.map { d -> d.detalle.id }
@@ -98,6 +102,7 @@ class RutinaActualRepository @Inject constructor(
     }
 
     suspend fun obtenerRutinasRemotas() {
+        if(!estadoConexionService.estaConectado.value!!) return
 
         try {
 
@@ -129,6 +134,8 @@ class RutinaActualRepository @Inject constructor(
     }
 
     suspend fun enviarRutinas() {
+        if(!estadoConexionService.estaConectado.value!!) return
+
         try {
 
             val rutinasDb = rutinaActualDao.obtenerRutinasDetalle()

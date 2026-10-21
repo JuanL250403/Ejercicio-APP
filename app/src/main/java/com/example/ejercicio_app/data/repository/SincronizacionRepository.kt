@@ -13,7 +13,6 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class SincronizacionRepository @Inject constructor(
-    private val database: AppDatabase,
     private val databaseDao: DatabaseDao,
     private val diasSemanaRepository: DiasSemanaRepository,
     private val rutinaActualRepository: RutinaActualRepository,

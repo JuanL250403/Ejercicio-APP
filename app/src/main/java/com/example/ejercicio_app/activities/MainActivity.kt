@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.os.SystemClock
 import android.text.format.DateUtils
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
@@ -17,13 +16,12 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.bumptech.glide.Glide
 import com.example.ejercicio_app.R
-import com.example.ejercicio_app.data.repository.DiasSemanaRepository
-import com.example.ejercicio_app.data.repository.RutinaActualRepository
-import com.example.ejercicio_app.data.repository.RutinaRealizadaRepository
 import com.example.ejercicio_app.data.repository.SincronizacionRepository
 import com.example.ejercicio_app.databinding.ActivityMainBinding
-import com.example.ejercicio_app.models.MainConexionViewModel
+import com.example.ejercicio_app.utils.EstadoAppService
+import com.example.ejercicio_app.utils.EstadoConexionService
 import com.example.ejercicio_app.models.RealizarEntrenamientoSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -37,20 +35,25 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    @Inject
+    lateinit var estadoApp: EstadoAppService
+
     val vmRealizarEntrenamientoShared: RealizarEntrenamientoSharedViewModel by viewModels()
 
     private val networkCallBack = object : ConnectivityManager.NetworkCallback() {
         override fun onAvailable(network: Network) {
             super.onAvailable(network)
-            vm.setEsstadoConexion(true)
+            estadoConexion.setEsstadoConexion(true)
         }
 
         override fun onLost(network: Network) {
             super.onLost(network)
-            vm.setEsstadoConexion(false)
+            estadoConexion.setEsstadoConexion(false)
         }
     }
-    val vm: MainConexionViewModel by viewModels()
+
+    @Inject
+    lateinit var estadoConexion: EstadoConexionService
 
 
     private lateinit var conectivityManager: ConnectivityManager
@@ -65,6 +68,8 @@ class MainActivity : AppCompatActivity() {
         configurarNavegacion()
 
         configurarCallBackConexion()
+
+        Glide.with(this).load(R.drawable.cargando).into(binding.imCargando)
 
         binding.ltCardTiempo.setOnClickListener {
             val navHostFragment =
@@ -97,13 +102,22 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-        vm.estaConectado.observe(this) { ec ->
-            Toast.makeText(this, "La conexion es $ec", Toast.LENGTH_SHORT).show()
+        estadoConexion.estaConectado.observe(this) { ec ->
 
             if (ec) {
                 lifecycleScope.launch {
                     sincronizacionRepository.enviarDatos()
                 }
+            }
+        }
+
+        estadoApp.cargando.observe(this) { c ->
+            if(c) {
+                binding.ltCargando.visibility = View.VISIBLE
+
+            } else {
+                binding.ltCargando.visibility = View.GONE
+
             }
         }
     }
@@ -112,7 +126,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnEstado.icon =
             ResourcesCompat.getDrawable(resources, R.drawable.ic_pause, null)
         binding.crTiempo.base =
-                 SystemClock.elapsedRealtime() - vmRealizarEntrenamientoShared.tiempoPausado.value!!
+            SystemClock.elapsedRealtime() - vmRealizarEntrenamientoShared.tiempoPausado.value!!
         setCronometroListener()
         binding.crTiempo.start()
     }

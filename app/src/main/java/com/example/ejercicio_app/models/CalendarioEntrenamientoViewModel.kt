@@ -1,5 +1,6 @@
 package com.example.ejercicio_app.models
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,6 +19,23 @@ class CalendarioEntrenamientoViewModel @Inject constructor(
 
     val dias: MutableLiveData<List<DiaSemanaUiModel>> by lazy {
         MutableLiveData()
+    }
+
+    private val _dia: MutableLiveData<DiaSemanaDetalleUiModel> by lazy {
+        MutableLiveData()
+    }
+
+    val dia: LiveData<DiaSemanaDetalleUiModel> get() = _dia
+
+    fun obtenerRutinaDeDia(){
+        viewModelScope.launch {
+            diasSemanaRepository.obtenerRutinaDeDia().collect { r ->
+                when(r) {
+                    is Recurso.Exito -> _dia.value = r.data
+                    else -> null
+                }
+            }
+        }
     }
 
     fun obtenerDiasSemana() {

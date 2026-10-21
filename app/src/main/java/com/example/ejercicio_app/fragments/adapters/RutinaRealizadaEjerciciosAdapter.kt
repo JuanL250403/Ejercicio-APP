@@ -39,9 +39,9 @@ class RutinaRealizadaEjerciciosAdapter(
 
         b.tvNombre.text = ejercicios[position].ejercicio.name
         b.tvReps.text = ejercicios[position].repeticiones.toString()
-        b.tvDescanso.text = ejercicios[position].descanso.toString()
+        b.tvDescanso.text = "${ejercicios[position].descanso}s"
         b.tvSeries.text = ejercicios[position].series.toString()
-        b.tvPeso.text = ejercicios[position].peso.toString()
+        b.tvPeso.text = "${ejercicios[position].peso}kg"
 
         b.root.setOnClickListener {
             verDetalle(ejercicios[position].id!!)

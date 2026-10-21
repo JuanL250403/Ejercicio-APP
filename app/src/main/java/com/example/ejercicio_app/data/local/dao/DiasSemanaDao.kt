@@ -29,4 +29,7 @@ interface DiasSemanaDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun guardarDiaSemana(dia: DiaSemanaRutinaActualEntity)
+
+    @Query("SELECT * FROM dias_semana_rutinas WHERE diaSemana = :dia")
+    suspend fun obtenerRutinaDeDia(dia: Int): DiaSemanaRutinaDetalle?
 }

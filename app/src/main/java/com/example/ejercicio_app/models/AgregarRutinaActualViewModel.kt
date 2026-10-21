@@ -1,6 +1,5 @@
 package com.example.ejercicio_app.models
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -12,13 +11,15 @@ import com.example.ejercicio_app.data.repository.RutinaActualRepository
 import com.example.ejercicio_app.data.ui.DetalleRutinaActualUiModel
 import com.example.ejercicio_app.data.ui.EjercicioActualUiModel
 import com.example.ejercicio_app.data.ui.RutinaActualUiModel
+import com.example.ejercicio_app.utils.EstadoAppService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
 import kotlinx.coroutines.launch
 
 @HiltViewModel
 class AgregarRutinaActualViewModel @Inject constructor(
-    private val rutinaActualRepository: RutinaActualRepository
+    private val rutinaActualRepository: RutinaActualRepository,
+    private val estadoAppService: EstadoAppService
 ) : ViewModel() {
     val nombre: MutableLiveData<String> by lazy {
         MutableLiveData()
@@ -105,7 +106,12 @@ class AgregarRutinaActualViewModel @Inject constructor(
         viewModelScope.launch {
             rutinaActualRepository.guardarRutina(rutina).collect { r ->
                 when(r) {
-                    is Recurso.Exito -> _guardada.value = true
+                    is Recurso.Cargando -> estadoAppService.estaCargando()
+                    is Recurso.Exito -> {
+                        _guardada.value = true
+                        estadoAppService.noEstaCargando()
+                    }
+                    is Recurso.Error -> estadoAppService.noEstaCargando()
                     else -> null
                 }
             }

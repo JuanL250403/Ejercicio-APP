@@ -12,6 +12,7 @@ import javax.inject.Inject
 class EjercicioActualRepository @Inject constructor(private val ejercicioActualDao: EjercicioActualDao) {
 
     fun obtenerEjercicio(id: String): Flow<Recurso<EjercicioActualUiModel>> = flow {
+        emit(Recurso.Cargando)
         val ejercicioActual = ejercicioActualDao.obtenerEjercicioActual(id)
 
         if(ejercicioActual != null) {

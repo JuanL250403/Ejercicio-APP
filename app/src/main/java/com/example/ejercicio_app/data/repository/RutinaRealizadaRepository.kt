@@ -15,6 +15,7 @@ import com.example.ejercicio_app.data.mapper.toUiModel
 import com.example.ejercicio_app.data.network.dto.Recurso
 import com.example.ejercicio_app.data.network.services.RutinaRealizadaService
 import com.example.ejercicio_app.data.ui.RutinaRealizadaUiModel
+import com.example.ejercicio_app.utils.EstadoConexionService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -22,6 +23,7 @@ import javax.inject.Inject
 class RutinaRealizadaRepository @Inject constructor(
     private val rutinaRealizadaDao: RutinaRealizadaDao,
     private val rutinaRealizadaService: RutinaRealizadaService,
+    private val estadoConexionService: EstadoConexionService,
     private val diaSemanaDao: DiasSemanaDao,
     private val diasSemanaRepository: DiasSemanaRepository
 ) {
@@ -90,6 +92,8 @@ class RutinaRealizadaRepository @Inject constructor(
 
     suspend fun obtenerRutinasRemotas() {
 
+        if(!estadoConexionService.estaConectado.value!!) return
+
         try {
 
             val respuesta = rutinaRealizadaService.obtenerRutinasRealizadas()
@@ -120,6 +124,8 @@ class RutinaRealizadaRepository @Inject constructor(
     }
 
     suspend fun enviarRutinas() {
+
+        if(!estadoConexionService.estaConectado.value!!) return
 
         try {
 

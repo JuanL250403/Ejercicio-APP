@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -86,14 +87,23 @@ class AgregarRutinaActualFragment : Fragment() {
 
 
         binding.btnTrenSup.setOnClickListener {
+            binding.btnTrenSup.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.primario))
+            binding.btnTrenInf.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.terciario))
+            binding.btnCuerpoComp.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.terciario))
             vm.parteAnatomica = ParteAnatomica.TREN_SUPERIOR
         }
 
         binding.btnTrenInf.setOnClickListener {
+            binding.btnTrenSup.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.terciario))
+            binding.btnTrenInf.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.primario))
+            binding.btnCuerpoComp.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.terciario))
             vm.parteAnatomica = ParteAnatomica.TREN_INFERIOR
         }
 
         binding.btnCuerpoComp.setOnClickListener {
+            binding.btnTrenSup.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.terciario))
+            binding.btnTrenInf.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.terciario))
+            binding.btnCuerpoComp.setStrokeColor(ContextCompat.getColor(requireContext(),R.color.primario))
             vm.parteAnatomica = ParteAnatomica.CUERPO_COMPLETO
         }
 

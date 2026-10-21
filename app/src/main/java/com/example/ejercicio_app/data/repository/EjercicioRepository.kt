@@ -18,11 +18,13 @@ import javax.inject.Inject
 class EjercicioRepository @Inject constructor(private val ejercicioDataSetDao: EjercicioDataSetDao) {
 
      fun obtenerEjercicios(): Flow<Recurso<List<EjercicioDataSetUiModel>>> = flow {
+         emit(Recurso.Cargando)
 
          emit(Recurso.Exito(ejercicioDataSetDao.obtenerEjerciciosDataset().toUiModel()))
     }
 
     fun obtenerEjercicio(id: String): Flow<Recurso<EjercicioDataSetUiModel>> = flow {
+        emit(Recurso.Cargando)
         val ejercicio = ejercicioDataSetDao.obtenerEjercicioDataset(id)
 
         if(ejercicio == null) {

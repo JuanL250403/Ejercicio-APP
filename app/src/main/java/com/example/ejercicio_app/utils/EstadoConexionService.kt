@@ -1,12 +1,15 @@
-package com.example.ejercicio_app.models
+package com.example.ejercicio_app.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class MainConexionViewModel: ViewModel() {
+@Singleton
+class EstadoConexionService @Inject constructor() {
     private val _estaConectado: MutableLiveData<Boolean> by lazy {
-        MutableLiveData()
+        MutableLiveData(false)
     }
 
     val estaConectado: LiveData<Boolean> get() = _estaConectado

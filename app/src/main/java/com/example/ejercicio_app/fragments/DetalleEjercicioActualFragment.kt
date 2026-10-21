@@ -40,10 +40,10 @@ class DetalleEjercicioActualFragment : Fragment() {
 
         vm.ejercicio.observe(viewLifecycleOwner) { e ->
             binding.tvNombreEjercicio.text = e.ejercicio.name
-            binding.tvPeso.text = e.peso.toString()
+            binding.tvPeso.text = "${e.peso}kg"
             binding.tvReps.text = e.repeticiones.toString()
             binding.tvSeries.text = e.series.toString()
-            binding.tvDescanso.text = e.descanso.toString()
+            binding.tvDescanso.text = "${e.descanso}s"
 
             cargarInstrucciones()
             cargarVideo()

@@ -46,8 +46,28 @@ class CalendarioEntrenamientoFragment : Fragment() {
             diasSemanaAdapter.actualizarDias(d)
         }
 
-        vm.obtenerDiasSemana()
+        vm.dia.observe(viewLifecycleOwner) { d ->
+            binding.tvRutina.text = d.rutina.nombre
+        }
 
+        binding.ltRutinaHoy.setOnClickListener {
+            if (vm.dia.value != null) realizarEntrenamiento()
+        }
+
+        vm.obtenerDiasSemana()
+        vm.obtenerRutinaDeDia()
+
+    }
+
+    fun realizarEntrenamiento() {
+        val datos = Bundle().apply {
+            putString("diaId", vm.dia.value?.id!!)
+        }
+
+        findNavController().navigate(
+            R.id.action_calendarioEntrenamientoFragment_to_realizarEntrenamientoFragment,
+            datos
+        )
     }
 
     private fun verDetalle(diaId: String, diaSemana: Int) {

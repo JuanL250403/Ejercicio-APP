@@ -9,15 +9,17 @@ import com.example.ejercicio_app.data.network.dto.Recurso
 import com.example.ejercicio_app.data.ui.EjercicioDataSetUiModel
 import com.example.ejercicio_app.data.repository.EjercicioRepository
 import com.example.ejercicio_app.data.ui.EjercicioActualUiModel
+import com.example.ejercicio_app.utils.EstadoAppService
 import dagger.hilt.android.lifecycle.HiltViewModel
 import jakarta.inject.Inject
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 @HiltViewModel
-class AgregarEjercicioViewModel @Inject constructor(private val ejercicioRepository: EjercicioRepository) :
-    ViewModel()  {
+class AgregarEjercicioViewModel @Inject constructor(
+    private val estadoAppService: EstadoAppService,
+    private val ejercicioRepository: EjercicioRepository
+) :
+    ViewModel() {
     val series: MutableLiveData<Int> by lazy {
         MutableLiveData()
     }
@@ -87,12 +89,17 @@ class AgregarEjercicioViewModel @Inject constructor(private val ejercicioReposit
     fun cargarEjercicio(ejercicioId: String) {
         viewModelScope.launch {
 
-                ejercicioRepository.obtenerEjercicio(ejercicioId).collect { r ->
-                    when(r) {
-                        is Recurso.Exito -> ejercicio.value = r.data
-                        else -> null
+            ejercicioRepository.obtenerEjercicio(ejercicioId).collect { r ->
+                when (r) {
+                    is Recurso.Cargando -> estadoAppService.estaCargando()
+                    is Recurso.Exito -> {
+                        ejercicio.value = r.data
+                        estadoAppService.noEstaCargando()
                     }
+                    is Recurso.Error -> estadoAppService.noEstaCargando()
+                    else -> null
                 }
+            }
 
 
         }
@@ -150,7 +157,7 @@ class AgregarEjercicioViewModel @Inject constructor(private val ejercicioReposit
 
     private fun validarPeso(): Boolean {
 
-        if(peso.value == null) {
+        if (peso.value == null) {
             _errorPeso.value = R.string.peso_invalido
             return false
         }

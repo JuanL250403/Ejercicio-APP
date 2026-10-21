@@ -23,6 +23,7 @@
             app:titleTextAppearance="@style/Texto_Titulo_Cabecera" />
     </LinearLayout>
 
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -34,6 +35,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ltCardTiempo"
         app:navGraph="@navigation/main_graph" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navBottom"
@@ -76,6 +78,7 @@
                 android:textSize="25dp"
                 android:text="15"
                 android:id="@+id/crTiempo"
+
                 android:textAlignment="gravity"
                 android:gravity="center"
                 android:layout_width="wrap_content"
@@ -97,4 +100,24 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:background="#14FFFFFF"
+        android:id="@+id/ltCargando"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:id="@+id/imCargando"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/cargando"
+            app:tint="@color/white" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
